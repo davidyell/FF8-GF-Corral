@@ -9,5 +9,10 @@
     ],
     "require": {
 		"twbs/bootstrap": "dev-fat-13157"
-    }
+    },
+	"autoload": {
+		"psr-4": {
+			"neon1024\\": "src/neon1024"
+		}
+	}
 }
