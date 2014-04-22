@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<GuardianForce>
+		<name>Quezacotl</name>
+		<element>Lightning</element>
+		<Junctions>
+			<junction>HP-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Elem-Atk-J</junction>
+			<junction>Elem-Def-J</junction>
+			<junction>Elem-Def-Jx2</junction>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
+		<name>Shiva</name>
+		<element>Ice</element>
+		<Junctions>
+			<junction>Str-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Elem-Atk-J</junction>
+			<junction>Elem-Def-J</junction>
+			<junction>Elem-Def-Jx2</junction>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
+		<name>Ifrit</name>
+		<element>Fire</element>
+		<Junctions>
+			<junction>Hp-J</junction>
+			<junction>Str-J</junction>
+			<junction>Elem-Atk-J</junction>
+			<junction>Elem-Def-J</junction>
+			<junction>Elem-Def-Jx2</junction>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
+		<name>Siren</name>
+		<element>Status</element>
+		<Junctions>
+			<junction>Mag-J</junction>
+			<junction>ST-Atk-J</junction>
+			<junction>ST-Def-J</junction>
+			<junction>ST-Def-Jx2</junction>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
+		<name>Brothers</name>
+		<element>Earth</element>
+		<Junctions>
+			<junction>Hp-J</junction>
+			<junction>Str-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Elem-Atk-J</junction>
+			<junction>Elem-Def-J</junction>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
+		<name>Carbuncle</name>
+		<element>Status</element>
+		<Junctions>
+			<junction>Hp-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>ST-Atk-J</junction>
+			<junction>ST-Def-J</junction>
+			<junction>ST-Def-Jx2</junction>
+			<junction>Abilityx3</junction>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
+		<name>Leviathan</name>
+		<element>Water</element>
+		<Junctions>
+			<junction>Mag-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Elem-Atk-J</junction>
+			<junction>Elem-Def-Jx2</junction>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
+		<name>Pandemona</name>
+		<element>Air</element>
+		<Junctions>
+			<junction>Str-J</junction>
+			<junction>Spd-J</junction>
+			<junction>Elem-Atk-J</junction>
+			<junction>Elem-Def-J</junction>
+			<junction>Elem-Def-Jx2</junction>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
+		<name>Cerberus</name>
+		<element>Status</element>
+		<Junctions>
+			<junction>Str-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Spd-J</junction>
+			<junction>Hit-J</junction>
+			<junction>ST-Atk-J</junction>
+			<junction>ST-Def-J</junction>
+			<junction>ST-Def-Jx2</junction>
+			<junction>ST-Def-Jx4</junction>
+			<junction>Abilityx3</junction>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
+		<name>Alexander</name>
+		<element>Holy</element>
+		<Junctions>
+			<junction>Spr-J</junction>
+			<junction>Elem-Atk-J</junction>
+			<junction>Elem-Def-J</junction>
+			<junction>Elem-Def-Jx2</junction>
+			<junction>Elem-Def-Jx4</junction>
+			<junction>Abilityx3</junction>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
+		<name>Doomtrain</name>
+		<element>Poison</element>
+		<Junctions>
+			<junction>Elem-Atk-J</junction>
+			<junction>ST-Atk-J</junction>
+			<junction>Elem-Def-Jx4</junction>
+			<junction>ST</junction>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
+		<name>Bahamut</name>
+		<element>None</element>
+		<Junctions>
+			<junction>Abilityx4</junction>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
+		<name>Cactuar</name>
+		<element>None</element>
+		<Junctions>
+			<junction>Eva-J</junction>
+			<junction>Luck-J</junction>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
+		<name>Tonberry</name>
+		<element>None</element>
+		<Junctions>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
+		<name>Eden</name>
+		<element>None</element>
+		<Junctions>
+			<junction>Spd-J</junction>
+			<junction>Eva-J</junction>
+			<junction>Hit-J</junction>
+		</Junctions>
+	</GuardianForce>
+	
+</root>

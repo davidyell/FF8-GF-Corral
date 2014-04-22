@@ -1,0 +1,19 @@
+/**
+ * Mixins and imports
+ */
+@import url(http://fonts.googleapis.com/css?family=Cinzel:400,700);
+@import "palette";
+@import "typography";
+
+/**
+ * Layout
+ */
+body {
+	background-color: $bg;
+}
+.container {
+	background-color: $fg;
+}
+header, div.body, footer {
+	padding: 10px;
+}

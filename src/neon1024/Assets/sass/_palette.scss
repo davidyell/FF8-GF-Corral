@@ -1,0 +1,15 @@
+$fg: #fff;
+$bg: #efefef;
+$fgText: #333;
+$highlight: #9e66c4;
+$bad: #e84747;
+$ok: #7aa02e;
+
+table {
+	i.glyphicon.glyphicon-ok {
+		color: $ok;
+	}
+	i.glyphicon.glyphicon-remove {
+		color: lighten($bad, 30%);
+	}
+}
