@@ -1,0 +1,13 @@
+{
+    "name": "davidyell/ff8-gf-corral",
+    "description": "Application for organising the most optimal spread of Final Fantasy 8 Guardian Forces",
+    "authors": [
+        {
+            "name": "David Yell",
+            "email": "neon1024@gmail.com"
+        }
+    ],
+    "require": {
+		"twbs/bootstrap": "dev-fat-13157"
+    }
+}
