@@ -1,6 +1,6 @@
 <?php
 /**
- * Garden
+ * Garden contains a collection of Characters
  *
  * @author David Yell <neon1024@gmail.com>
  */
@@ -51,5 +51,14 @@ class Garden {
 	 */
 	public function getCharacter($name) {
 		return $this->collection[$name];
+	}
+	
+	/**
+	 * Return the whole collection
+	 * 
+	 * @return array
+	 */
+	public function getCollection() {
+		return $this->collection;
 	}
 }

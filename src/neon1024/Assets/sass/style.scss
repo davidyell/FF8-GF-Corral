@@ -17,3 +17,18 @@ body {
 header, div.body, footer {
 	padding: 10px;
 }
+
+table {
+	tr td {
+		text-align: center;
+		&.table-label {
+			text-align: left;
+		}
+		select {
+			float: right;
+		}
+		img.junctioned {
+			height: 40px;
+		}
+	}
+}

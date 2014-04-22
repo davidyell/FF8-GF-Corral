@@ -27,22 +27,33 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php
-						foreach ($this->viewVars['gfs']->getCollection() as $gf) {
-							echo "<tr><td>" . $gf->getName() . "</td>";
+						<?php foreach ($this->viewVars['gfs']->getCollection() as $gf): ?>
+							<tr>
+								<td class='table-label'>
+									<?php echo $gf->getName(); ?>
 
-							foreach ($this->junctions as $junction) {
-								echo "<td>";
-								if ($gf->hasJunction($junction)) {
-									echo "<i class='glyphicon glyphicon-ok'></i>";
-								} else {
-									echo "<i class='glyphicon glyphicon-remove'></i>";
+									<select name='character' id='<?php echo strtolower($gf->getName());?>' class='select-character'><option>Select character</option>
+									<?php	
+									foreach ($this->viewVars['chars']->getCollection() as $character) {
+										echo "<option value='" . $character->getName() . "'>" . $character->getName() . "</option>";
+									}
+									?>
+									</select>
+								</td>
+								
+								<?php
+								foreach ($this->junctions as $junction) {
+									echo "<td>";
+										if ($gf->hasJunction($junction)) {
+											echo "<i class='glyphicon glyphicon-ok'></i>";
+										} else {
+//											echo "<i class='glyphicon glyphicon-remove'></i>";
+										}
+									echo "</td>";
 								}
-								echo "</td>";
-							}
-							echo "</tr>";
-						}
-						?>
+								?>
+							</tr>
+						<?php endforeach;?>
 					</tbody>
 				</table>
 				
@@ -55,5 +66,6 @@
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="/src/neon1024/Assets/js/common.js"></script>
     </body>
 </html>

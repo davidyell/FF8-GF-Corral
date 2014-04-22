@@ -1,6 +1,6 @@
 <?php
 /**
- * Corral
+ * Corral contains a collection of GuardianForces
  *
  * @author David Yell <neon1024@gmail.com>
  */
