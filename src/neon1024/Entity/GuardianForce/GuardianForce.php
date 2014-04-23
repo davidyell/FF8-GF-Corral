@@ -5,7 +5,7 @@
  * @author David Yell <neon1024@gmail.com>
  */
 
-namespace neon1024\GuardianForces;
+namespace neon1024\Entity\GuardianForce;
 
 class GuardianForce {
 	

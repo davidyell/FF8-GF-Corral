@@ -1,15 +1,15 @@
 <?php
 /**
- * Garden contains a collection of Characters
+ * Corral contains a collection of GuardianForces
  *
  * @author David Yell <neon1024@gmail.com>
  */
-namespace neon1024\Characters;
+namespace neon1024\Entity\GuardianForce;
 
 use \Exception;
-use neon1024\Characters\Character;
+use neon1024\Entity\GuardianForce\GuardianForce;
 
-class Garden {
+class Corral {
 
 	/**
 	 * Store the XML file data
@@ -19,42 +19,42 @@ class Garden {
 	private $xml = null;
 	
 	/**
-	 * Collection of Characters
+	 * Collection of Guardian Forces
 	 * 
 	 * @var array
 	 */
 	private $collection = [];
 	
 	/**
-	 * Construct the collection and instantiate Characters
+	 * Construct the collection and instantiate GFs
 	 * 
-	 * @param string $file Path to the Char xml data
+	 * @param string $file Path to the GF xml data
 	 * @throws Exception
 	 */
 	public function __construct($file) {
 		if (file_exists($file)) {
 			$this->xml = simplexml_load_file($file);
 		} else {
-			throw new Exception('No character data found');
+			throw new Exception('No GF data found');
 		}
 		
-		foreach ($this->xml->Character as $char) {
-			$this->collection[(string)$char->name] = new Character($char);
+		foreach ($this->xml->GuardianForce as $gf) {
+			$this->collection[(string)$gf->name] = new GuardianForce($gf);
 		}
 	}
 	
 	/**
-	 * Get a specific character from the collection 
+	 * Get a specific GF from the collection 
 	 * 
 	 * @param string $name
 	 * @return GuardianForce
 	 */
-	public function getCharacter($name) {
+	public function getGF($name) {
 		return $this->collection[$name];
 	}
 	
 	/**
-	 * Return the whole collection
+	 * Return a list of all the loaded GFs
 	 * 
 	 * @return array
 	 */

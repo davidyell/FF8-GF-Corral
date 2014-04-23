@@ -8,11 +8,11 @@
 /**
  * Composer auto-loader
  */
-require 'vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 /**
  * Bootstrap
  */
-require 'src/neon1024/Bootstrap.php';
+require '../../src/neon1024/Bootstrap.php';
 $site = new \neon1024\Bootstrap();
 $site->render($_SERVER['REQUEST_URI']);

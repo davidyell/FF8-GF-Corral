@@ -5,20 +5,12 @@
  * @author David Yell <neon1024@gmail.com>
  */
 
-namespace neon1024\Characters;
+namespace neon1024\Entity\Character;
 
-use neon1024\Characters\CharacterInferface;
-use neon1024\GuardianForces\GuardianForce;
+use neon1024\Entity\Character\CharacterInferface;
+use neon1024\Entity\GuardianForce\GuardianForce;
 
 class Character implements CharacterInferface {
-	
-	/**
-	 * Store a list of all this characters junctioned GFs
-	 * 
-	 * @var array
-	 */
-	private $junctioned = [];
-	
 	/**
 	 * Name of the character
 	 * 
@@ -32,6 +24,13 @@ class Character implements CharacterInferface {
 	 * @var array
 	 */
 	private $junctionable = [];
+	
+	/**
+	 * Store a list of all this characters junctioned GFs
+	 * 
+	 * @var array
+	 */
+	private $junctioned = [];
 	
 	/**
 	 * Collection of junctioned Guardian Forces
@@ -57,6 +56,11 @@ class Character implements CharacterInferface {
 	 * @return \neon1024\Characters\Character
 	 */
 	public function junction(GuardianForce $gf) {
+		$this->junctionedGFs = array_merge($this->junctionedGFs, [$gf]);
+		
+		foreach ($gf->getJunctions() as $junction) {
+			$this->statJunctioned($junction);
+		}
 		
 		return $this;
 	}
@@ -71,9 +75,24 @@ class Character implements CharacterInferface {
 	}
 	
 	/**
+	 * Set a set as being junctioned
+	 * 
+	 * @param string $junction
+	 * @return bool
+	 */
+	protected function statJunctioned($junction) {
+		if (in_array($junction, $this->junctionable)) {
+			unset($this->junctionable[$junction]);
+			$this->junctioned[] = $junction;
+			return true;
+		}
+		return false;
+	}
+	
+	/**
 	 * Return the name of the character
 	 * 
-	 * @return type
+	 * @return string
 	 */
 	public function getName() {
 		return $this->name;

@@ -7,8 +7,8 @@
 
 namespace neon1024;
 
-use neon1024\Characters\Garden;
-use neon1024\GuardianForces\Corral;
+use neon1024\Entity\Character\Garden;
+use neon1024\Entity\GuardianForce\Corral;
 
 class Bootstrap {
 	
@@ -35,8 +35,8 @@ class Bootstrap {
 	 * @var array 
 	 */
 	private $defaults = [
-		'characters' => 'src/neon1024/Characters/Characters.xml',
-		'gfs' => 'src/neon1024/GuardianForces/GFs.xml'
+		'characters' => '../../src/neon1024/Entity/Character/Characters.xml',
+		'gfs' => '../../src/neon1024/Entity/GuardianForce/GFs.xml'
 	];
 	
 	/**
@@ -45,8 +45,8 @@ class Bootstrap {
 	 * @var array
 	 */
 	private $userData = [
-		'characters' => 'config/Characters.xml',
-		'gfs' => 'config/GFs.xml'
+		'characters' => '../../config/Characters.xml',
+		'gfs' => '../../config/GFs.xml'
 	];
 	
 	/**
@@ -83,13 +83,18 @@ class Bootstrap {
 	 * @param string $url
 	 */
 	public function render($url) {
+		ob_start();
+		
 		switch($url) {
 			case '/':
 			default:
-				ob_start();
 				require 'Views/index.php';
-				ob_flush();
+				break;
+			case '/junction':
+				require 'Views/junction.php';
 				break;
 		}
+		
+		ob_flush();
 	}
 }

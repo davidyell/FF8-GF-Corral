@@ -5,7 +5,9 @@
  * @author David Yell <neon1024@gmail.com>
  */
 
-namespace neon1024\Characters;
+namespace neon1024\Entity\Character;
+
+use neon1024\Entity\GuardianForce\GuardianForce;
 
 interface CharacterInferface {
 	
@@ -14,6 +16,6 @@ interface CharacterInferface {
 	 * 
 	 * @param GuardianForce $gf The name of the Guardian Force being junctioned
 	 */
-	public function junction(\neon1024\GuardianForces\GuardianForce $gf);
+	public function junction(GuardianForce $gf);
 	
 }

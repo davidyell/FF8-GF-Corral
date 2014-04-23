@@ -24,6 +24,6 @@ The junctions that can be placed in the XML file are Case SenSiTive.
 * Hit-J
 * Luck-J
 
-#Credit
+##Credit
 David Yell <neon1024@gmail.com>  
 Squaresoft / Square Enix - Final Fantasy VIII

@@ -6,7 +6,7 @@
 		
 		<link rel="stylesheet" href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/vendor/twbs/bootstrap/dist/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="/src/neon1024/Assets/css/style.css">
+		<link rel="stylesheet" href="../../../web/public/assets/css/style.css">
 		
     </head>
     <body>
