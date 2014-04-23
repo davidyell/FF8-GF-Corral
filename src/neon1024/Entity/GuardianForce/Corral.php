@@ -6,59 +6,20 @@
  */
 namespace neon1024\Entity\GuardianForce;
 
-use \Exception;
-use neon1024\Entity\GuardianForce\GuardianForce;
+use neon1024\Repository\Repository;
 
-class Corral {
-
+class Corral extends Repository {
 	/**
-	 * Store the XML file data
+	 * Construct the collection and instantiate classes
 	 * 
-	 * @var SimpleXMLElement
-	 */
-	private $xml = null;
-	
-	/**
-	 * Collection of Guardian Forces
-	 * 
-	 * @var array
-	 */
-	private $collection = [];
-	
-	/**
-	 * Construct the collection and instantiate GFs
-	 * 
-	 * @param string $file Path to the GF xml data
+	 * @param string $file Path to the xml data
 	 * @throws Exception
 	 */
 	public function __construct($file) {
-		if (file_exists($file)) {
-			$this->xml = simplexml_load_file($file);
-		} else {
-			throw new Exception('No GF data found');
-		}
+		$this->load($file);
 		
 		foreach ($this->xml->GuardianForce as $gf) {
 			$this->collection[(string)$gf->name] = new GuardianForce($gf);
 		}
-	}
-	
-	/**
-	 * Get a specific GF from the collection 
-	 * 
-	 * @param string $name
-	 * @return GuardianForce
-	 */
-	public function getGF($name) {
-		return $this->collection[$name];
-	}
-	
-	/**
-	 * Return a list of all the loaded GFs
-	 * 
-	 * @return array
-	 */
-	public function getCollection() {
-		return $this->collection;
 	}
 }
