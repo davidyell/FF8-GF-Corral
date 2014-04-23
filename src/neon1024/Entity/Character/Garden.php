@@ -19,8 +19,8 @@ class Garden extends Repository {
 	public function __construct($file) {
 		$this->load($file);
 		
-		foreach ($this->xml->Character as $gf) {
-			$this->collection[(string)$gf->name] = new Character($gf);
+		foreach ($this->xml->Character as $char) {
+			$this->collection[(string)$char->name] = new Character($char);
 		}
 	}
 }
