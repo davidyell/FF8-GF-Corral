@@ -17,19 +17,21 @@
 			
 			<div class="row body">
 				
-				<table summary="GF Junction table" class='table table-bordered table-striped'>
+				<table summary="GF Junction table" class='table table-bordered'>
 					<thead>
 						<tr>
 							<th>GF</th>
 							<?php foreach ($this->junctions as $junction) {
 								echo "<th>" . $junction . "</th>";
 							}?>
+							<th>Abilities</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php foreach ($this->viewVars['gfs']->getCollection() as $gf): ?>
 							<tr>
 								<td class='table-label'>
+									<img src='/src/neon1024/Assets/images/<?php echo $gf->getName();?>.png'>
 									<?php echo $gf->getName(); ?>
 
 									<select name='character' id='<?php echo strtolower($gf->getName());?>' class='select-character'><option>Select character</option>
@@ -43,7 +45,7 @@
 								
 								<?php
 								foreach ($this->junctions as $junction) {
-									echo "<td>";
+									echo "<td class='" . strtolower($junction) . "'>";
 										if ($gf->hasJunction($junction)) {
 											echo "<i class='glyphicon glyphicon-ok'></i>";
 										} else {
@@ -52,6 +54,15 @@
 									echo "</td>";
 								}
 								?>
+								<td class='extras'>
+									<?php
+									foreach ($gf->getJunctions() as $junction){
+										if (preg_match('/(Elem|ST|Ability)/', $junction)) {
+											echo $junction . '<br>';
+										}
+									}
+									?>
+								</td>
 							</tr>
 						<?php endforeach;?>
 					</tbody>
