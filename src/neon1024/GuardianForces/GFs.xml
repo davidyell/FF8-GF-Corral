@@ -62,6 +62,17 @@
 	</GuardianForce>
 	
 	<GuardianForce>
+		<name>Diablos</name>
+		<element>Gravity</element>
+		<Junctions>
+			<junction>Hp-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Hit-J</junction>
+			<junction>Abilityx3</junction>
+		</Junctions>
+	</GuardianForce>
+	
+	<GuardianForce>
 		<name>Carbuncle</name>
 		<element>Status</element>
 		<Junctions>
