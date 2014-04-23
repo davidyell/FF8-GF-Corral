@@ -27,8 +27,14 @@ table {
 		select {
 			float: right;
 		}
-		img.junctioned {
+		img {
 			height: 40px;
+			&.junctioned {
+				padding: 2px;
+				background-color: #fff;
+				border-radius: 3px;
+				border: 1px solid darken($bg, 20%);
+			}
 		}
 	}
 }

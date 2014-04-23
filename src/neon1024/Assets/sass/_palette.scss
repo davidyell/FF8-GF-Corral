@@ -5,11 +5,32 @@ $highlight: #9e66c4;
 $bad: #e84747;
 $ok: #7aa02e;
 
+$hp: #f9b3b3;
+$str: #f7dbb2;
+$vit: #f0f4b2;
+$mag: #b4f2b0;
+$spr: #aeefea;
+$spd: #adbaed;
+$eva: #d4abea;
+$hit: #e8abd3;
+$luck: #ededed;
+
 table {
 	i.glyphicon.glyphicon-ok {
 		color: $ok;
 	}
 	i.glyphicon.glyphicon-remove {
 		color: lighten($bad, 30%);
+	}
+	td {
+		&.hp { background-color: $hp; }
+		&.str { background-color: $str }
+		&.vit { background-color: $vit }
+		&.mag { background-color: $mag }
+		&.spr { background-color: $spr }
+		&.spd { background-color: $spd }
+		&.eva { background-color: $eva }
+		&.hit { background-color: $hit }
+		&.luck { background-color: $luck }
 	}
 }
