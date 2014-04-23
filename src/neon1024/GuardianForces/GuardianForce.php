@@ -31,6 +31,13 @@ class GuardianForce {
 	private $junctions = [];
 	
 	/**
+	 * Collection of GFs abilities
+	 * 
+	 * @var array
+	 */
+	private $abilities = [];
+	
+	/**
 	 * Build a GF and assign it's data
 	 * 
 	 * @param SimpleXMLElement $data
@@ -39,6 +46,7 @@ class GuardianForce {
 		$this->setName((string)$data->name);
 		$this->setElement((string)$data->element);
 		$this->setJunctions((array)$data->Junctions->junction);
+		$this->setAbilities((array)$data->Abilities->ability);
 	}
 	
 	/**
@@ -118,4 +126,21 @@ class GuardianForce {
 		return $this->junctions;
 	}
 	
+	/**
+	 * Get a list of the GFs abilities
+	 * 
+	 * @return array
+	 */
+	public function getAbilities() {
+		return $this->abilities;
+	}
+	
+	/**
+	 * Set the GFs abilities
+	 * 
+	 * @param array $abilities
+	 */
+	protected function setAbilities(array $abilities) {
+		$this->abilities = $abilities;
+	}
 }
