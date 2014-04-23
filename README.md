@@ -24,6 +24,10 @@ The junctions that can be placed in the XML file are Case SenSiTive.
 * Hit-J
 * Luck-J
 
-#Credit
+##Development
+As this is in alpha and currently under development, most code will be in the [`develop` branch](https://github.com/davidyell/FF8-GF-Corral/tree/develop).
+
+##Credit
 David Yell <neon1024@gmail.com>  
 Squaresoft / Square Enix - Final Fantasy VIII
+
