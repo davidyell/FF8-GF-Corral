@@ -26,6 +26,7 @@ table {
 		}
 		select {
 			float: right;
+			margin-top: 12px;
 		}
 		img {
 			height: 40px;
@@ -37,4 +38,8 @@ table {
 			}
 		}
 	}
+}
+
+.table > tbody > tr > td {
+	vertical-align: middle;
 }

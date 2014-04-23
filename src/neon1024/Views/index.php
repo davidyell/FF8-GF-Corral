@@ -24,6 +24,7 @@
 							<?php foreach ($this->junctions as $junction) {
 								echo "<th>" . $junction . "</th>";
 							}?>
+							<th>Other junctions</th>
 							<th>Abilities</th>
 						</tr>
 					</thead>
@@ -54,12 +55,19 @@
 									echo "</td>";
 								}
 								?>
-								<td class='extras'>
+								<td>
 									<?php
-									foreach ($gf->getJunctions() as $junction){
+									foreach ($gf->getJunctions() as $junction) {
 										if (preg_match('/(Elem|ST|Ability)/', $junction)) {
 											echo $junction . '<br>';
 										}
+									}
+									?>
+								</td>
+								<td>
+									<?php
+									foreach ($gf->getAbilities() as $ability) {
+										echo $ability . "<br>";
 									}
 									?>
 								</td>
