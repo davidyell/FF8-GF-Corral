@@ -42,9 +42,9 @@ class Character implements CharacterInferface {
 	/**
 	 * Build the character
 	 * 
-	 * @param array $data
+	 * @param SimpleXMLElement $data
 	 */
-	public function __construct($data) {
+	public function __construct(\SimpleXMLElement $data) {
 		$this->setName((string)$data->name);
 		$this->setJunctionableStats((array)$data->Junctions->junction);
 	}
@@ -59,28 +59,38 @@ class Character implements CharacterInferface {
 		$this->junctionedGFs = array_merge($this->junctionedGFs, [$gf]);
 		
 		foreach ($gf->getJunctions() as $junction) {
-			$this->statJunctioned($junction);
+			$this->setStatJunctioned($junction);
 		}
 		
 		return $this;
 	}
-
+	
 	/**
-	 * Return junctioned GF's on this character
+	 * Get a list of the Guardian Forces which have been junctioned to this
+	 * character
 	 * 
 	 * @return array
 	 */
-	public function getJunctioned() {
+	public function getJunctionedGFs() {
+		return $this->junctionedGFs;
+	}
+
+	/**
+	 * Return junctioned stats on this character
+	 * 
+	 * @return array
+	 */
+	public function getJunctionedStats() {
 		return $this->junctioned;
 	}
 	
 	/**
-	 * Set a set as being junctioned
+	 * Set a stat as being junctioned
 	 * 
 	 * @param string $junction
 	 * @return bool
 	 */
-	protected function statJunctioned($junction) {
+	protected function setStatJunctioned($junction) {
 		if (in_array($junction, $this->junctionable)) {
 			unset($this->junctionable[$junction]);
 			$this->junctioned[] = $junction;

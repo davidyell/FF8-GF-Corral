@@ -4,15 +4,15 @@
 		<name>Squall</name>
 		<image>squall.png</image>
 		<Junctions>
-			<junction>HP</junction>
-			<junction>Str</junction>
-			<junction>Vit</junction>
-			<junction>Mag</junction>
-			<junction>Spr</junction>
-			<junction>Spd</junction>
-			<junction>Eva</junction>
-			<junction>Hit</junction>
-			<junction>Luck</junction>
+			<junction>HP-J</junction>
+			<junction>Str-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Spd-J</junction>
+			<junction>Eva-J</junction>
+			<junction>Hit-J</junction>
+			<junction>Luck-J</junction>
 		</Junctions>
 	</Character>
 	
@@ -20,15 +20,15 @@
 		<name>Rinoa</name>
 		<image>rinoa.png</image>
 		<Junctions>
-			<junction>HP</junction>
-			<junction>Str</junction>
-			<junction>Vit</junction>
-			<junction>Mag</junction>
-			<junction>Spr</junction>
-			<junction>Spd</junction>
-			<junction>Eva</junction>
-			<junction>Hit</junction>
-			<junction>Luck</junction>
+			<junction>HP-J</junction>
+			<junction>Str-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Spd-J</junction>
+			<junction>Eva-J</junction>
+			<junction>Hit-J</junction>
+			<junction>Luck-J</junction>
 		</Junctions>
 	</Character>
 	
@@ -36,15 +36,15 @@
 		<name>Quistis</name>
 		<image>quistis.png</image>
 		<Junctions>
-			<junction>HP</junction>
-			<junction>Str</junction>
-			<junction>Vit</junction>
-			<junction>Mag</junction>
-			<junction>Spr</junction>
-			<junction>Spd</junction>
-			<junction>Eva</junction>
-			<junction>Hit</junction>
-			<junction>Luck</junction>
+			<junction>HP-J</junction>
+			<junction>Str-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Spd-J</junction>
+			<junction>Eva-J</junction>
+			<junction>Hit-J</junction>
+			<junction>Luck-J</junction>
 		</Junctions>
 	</Character>
 	
@@ -52,15 +52,15 @@
 		<name>Zell</name>
 		<image>zell.png</image>
 		<Junctions>
-			<junction>HP</junction>
-			<junction>Str</junction>
-			<junction>Vit</junction>
-			<junction>Mag</junction>
-			<junction>Spr</junction>
-			<junction>Spd</junction>
-			<junction>Eva</junction>
-			<junction>Hit</junction>
-			<junction>Luck</junction>
+			<junction>HP-J</junction>
+			<junction>Str-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Spd-J</junction>
+			<junction>Eva-J</junction>
+			<junction>Hit-J</junction>
+			<junction>Luck-J</junction>
 		</Junctions>
 	</Character>
 	
@@ -68,15 +68,15 @@
 		<name>Selphie</name>
 		<image>selphie.png</image>
 		<Junctions>
-			<junction>HP</junction>
-			<junction>Str</junction>
-			<junction>Vit</junction>
-			<junction>Mag</junction>
-			<junction>Spr</junction>
-			<junction>Spd</junction>
-			<junction>Eva</junction>
-			<junction>Hit</junction>
-			<junction>Luck</junction>
+			<junction>HP-J</junction>
+			<junction>Str-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Spd-J</junction>
+			<junction>Eva-J</junction>
+			<junction>Hit-J</junction>
+			<junction>Luck-J</junction>
 		</Junctions>
 	</Character>
 	
@@ -84,15 +84,15 @@
 		<name>Irvine</name>
 		<image>irvine.png</image>
 		<Junctions>
-			<junction>HP</junction>
-			<junction>Str</junction>
-			<junction>Vit</junction>
-			<junction>Mag</junction>
-			<junction>Spr</junction>
-			<junction>Spd</junction>
-			<junction>Eva</junction>
-			<junction>Hit</junction>
-			<junction>Luck</junction>
+			<junction>HP-J</junction>
+			<junction>Str-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Spd-J</junction>
+			<junction>Eva-J</junction>
+			<junction>Hit-J</junction>
+			<junction>Luck-J</junction>
 		</Junctions>
 	</Character>
 </root>

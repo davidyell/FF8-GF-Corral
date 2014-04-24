@@ -42,7 +42,7 @@ class GuardianForce {
 	 * 
 	 * @param SimpleXMLElement $data
 	 */
-	public function __construct($data) {
+	public function __construct(\SimpleXMLElement $data) {
 		$this->setName((string)$data->name);
 		$this->setElement((string)$data->element);
 		$this->setJunctions((array)$data->Junctions->junction);
@@ -110,7 +110,10 @@ class GuardianForce {
 	 * @return boolean
 	 */
 	public function hasJunction($junction) {
-		if (in_array($junction . '-J', $this->junctions)) {
+		if (strpos($junction, '-J') === false) {
+			$junction = $junction . '-J';
+		}
+		if (in_array($junction, $this->junctions)) {
 			return true;
 		}
 		

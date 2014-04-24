@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<GuardianForce>
+		<name>Quezacotl</name>
+		<element>Lightning</element>
+		<Junctions>
+			<junction>HP-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Elem-Atk-J</junction>
+			<junction>Elem-Def-J</junction>
+			<junction>Elem-Def-Jx2</junction>
+		</Junctions>
+		<Abilities>
+			<ability>Card</ability>
+		</Abilities>
+	</GuardianForce>
+</root>

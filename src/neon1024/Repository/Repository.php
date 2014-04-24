@@ -7,8 +7,9 @@
 namespace neon1024\Repository;
 
 use \Exception;
+use neon1024\Repository\RepositoryInterface;
 
-class Repository {
+abstract class Repository implements RepositoryInterface {
 	/**
 	 * Store the XML file data
 	 * 
@@ -28,13 +29,18 @@ class Repository {
 	 * 
 	 * @param type $file
 	 * @throws Exception
+	 * @return bool
 	 */
 	public function load($file) {
 		if (file_exists($file)) {
 			$this->xml = simplexml_load_file($file);
+			
+			return true;
 		} else {
 			throw new Exception('No data found');
 		}
+		
+		return false;
 	}
 	
 	/**
@@ -48,11 +54,16 @@ class Repository {
 	}
 	
 	/**
-	 * Return a list of all the loaded classes
+	 * Return a list of all the loaded objects
 	 * 
 	 * @return array
 	 */
 	public function getCollection() {
 		return $this->collection;
 	}
+	
+	/**
+	 * Load objects into the collection
+	 */
+	abstract public function populate();
 }
