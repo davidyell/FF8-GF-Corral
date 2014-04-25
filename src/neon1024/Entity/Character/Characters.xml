@@ -95,4 +95,85 @@
 			<junction>Luck-J</junction>
 		</Junctions>
 	</Character>
+	
+	<Character>
+		<name>Seifer</name>
+		<image>seifer.png</image>
+		<Junctions>
+			<junction>HP-J</junction>
+			<junction>Str-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Spd-J</junction>
+			<junction>Eva-J</junction>
+			<junction>Hit-J</junction>
+			<junction>Luck-J</junction>
+		</Junctions>
+	</Character>
+	
+	<Character>
+		<name>Edea</name>
+		<image>edea.png</image>
+		<Junctions>
+			<junction>HP-J</junction>
+			<junction>Str-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Spd-J</junction>
+			<junction>Eva-J</junction>
+			<junction>Hit-J</junction>
+			<junction>Luck-J</junction>
+		</Junctions>
+	</Character>
+
+	<Character>
+		<name>Laguna</name>
+		<image>laguna.png</image>
+		<Junctions>
+			<junction>HP-J</junction>
+			<junction>Str-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Spd-J</junction>
+			<junction>Eva-J</junction>
+			<junction>Hit-J</junction>
+			<junction>Luck-J</junction>
+		</Junctions>
+	</Character>
+	
+	<Character>
+		<name>Kiros</name>
+		<image>kiros.png</image>
+		<Junctions>
+			<junction>HP-J</junction>
+			<junction>Str-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Spd-J</junction>
+			<junction>Eva-J</junction>
+			<junction>Hit-J</junction>
+			<junction>Luck-J</junction>
+		</Junctions>
+	</Character>
+
+	
+	<Character>
+		<name>Ward</name>
+		<image>ward.png</image>
+		<Junctions>
+			<junction>HP-J</junction>
+			<junction>Str-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Spd-J</junction>
+			<junction>Eva-J</junction>
+			<junction>Hit-J</junction>
+			<junction>Luck-J</junction>
+		</Junctions>
+	</Character>
 </root>
