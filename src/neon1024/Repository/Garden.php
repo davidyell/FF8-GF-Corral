@@ -4,7 +4,7 @@
  *
  * @author David Yell <neon1024@gmail.com>
  */
-namespace neon1024\Entity\Character;
+namespace neon1024\Repository;
 
 use neon1024\Repository\Repository;
 use neon1024\Entity\Character\Character;

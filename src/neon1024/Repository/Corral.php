@@ -4,10 +4,10 @@
  *
  * @author David Yell <neon1024@gmail.com>
  */
-namespace neon1024\Entity\GuardianForce;
+namespace neon1024\Repository;
 
 use neon1024\Repository\Repository;
-use neon1024\Repository\RepositoryInterface;
+use neon1024\Entity\GuardianForce\GuardianForce;
 
 class Corral extends Repository {
 	
