@@ -34,6 +34,8 @@ class Bootstrap {
 				$controller->index();
 				break;
 			case '/junction':
+				$controller = new Controller\JunctionsController();
+				$controller->autoJunction();
 				break;
 		}
 		

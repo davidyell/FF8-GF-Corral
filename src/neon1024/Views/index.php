@@ -13,6 +13,9 @@
 		<div class="container">
 			<header class="row">
 				<h1>Final Fantasy VIII - Guardian Force Corral</h1>
+				<nav>
+					<a href="junction" class="btn btn-primary">Auto-junction</a>
+				</nav>
 			</header>
 			
 			<div class="row body">
