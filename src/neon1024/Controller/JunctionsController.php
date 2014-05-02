@@ -8,6 +8,7 @@ namespace neon1024\Controller;
 
 use neon1024\Repository\Garden;
 use neon1024\Repository\Corral;
+use neon1024\Repository\Party;
 
 class JunctionsController {
 	
@@ -92,18 +93,22 @@ class JunctionsController {
 		}
 		$garden = new Garden($file);
 		
-		$firstCharacter = $garden->getItem('Squall');
-		$secondCharacter = $garden->getItem('Zell');
-		$thirdCharacter = $garden->getItem('Selphie');
+		$one = $garden->getItem('Squall');
+		$two = $garden->getItem('Zell');
+		$three = $garden->getItem('Selphie');
+		
+		$party = new Party($one, $two, $three);
 		
 		// TODO: Start trying to junction GF's until a characters junctionable 
 		// array is empty, then try the next character.
-		foreach ($corral->getCollection() as $gf) {
-			if (!$gf->getJunctionedBy()) {
-				$firstCharacter->junction($gf);
+		foreach ($party as $character) {
+			foreach ($corral->getCollection() as $gf) {
+				if (!$gf->getJunctionedBy()) {
+					$character->junction($gf);
+				}
 			}
+			var_dump($character);
 		}
-		var_dump($firstCharacter);
 		
 		// TODO: Advance to shuffling the GF's to prioritise certain junctions
 		// such as HP, Str, Vit, Spr, Mag, Hit, Eva, Luck
