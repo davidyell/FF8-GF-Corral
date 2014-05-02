@@ -57,6 +57,7 @@ class Character implements CharacterInferface {
 	 */
 	public function junction(GuardianForce $gf) {
 		$this->junctionedGFs = array_merge($this->junctionedGFs, [$gf]);
+		$gf->setJunctionTo($this);
 		
 		foreach ($gf->getJunctions() as $junction) {
 			$this->setStatJunctioned($junction);
@@ -92,7 +93,7 @@ class Character implements CharacterInferface {
 	 */
 	protected function setStatJunctioned($junction) {
 		if (in_array($junction, $this->junctionable)) {
-			unset($this->junctionable[$junction]);
+			$this->junctionable = array_diff($this->junctionable, [$junction]);
 			$this->junctioned[] = $junction;
 			return true;
 		}

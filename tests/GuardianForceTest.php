@@ -7,6 +7,7 @@
 namespace tests;
 
 use neon1024\Entity\GuardianForce\GuardianForce;
+use neon1024\Entity\Character\Character;
 
 class GuardianForceTest extends \PHPUnit_Framework_TestCase {
 	
@@ -86,5 +87,16 @@ class GuardianForceTest extends \PHPUnit_Framework_TestCase {
 		$this->GuardianForce->addJunction('Spr-J');
 		
 		$this->assertContains('Spr-J', $this->GuardianForce->getJunctions());
+	}
+	
+	/**
+	 * Make sure that the GF can be junctioned to a character
+	 */
+	public function testJunctionToACharacter() {
+		$charData = simplexml_load_file(__DIR__ . '/Fixture/Squall.xml');
+		$character = new Character($charData->Character);
+		$this->GuardianForce->setJunctionTo($character);
+		
+		$this->assertNotEmpty($this->GuardianForce->getJunctionedBy());
 	}
 }

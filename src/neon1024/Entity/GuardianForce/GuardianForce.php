@@ -7,6 +7,8 @@
 
 namespace neon1024\Entity\GuardianForce;
 
+use neon1024\Entity\Character\Character;
+
 class GuardianForce {
 	
 	/**
@@ -22,6 +24,13 @@ class GuardianForce {
 	 * @var string
 	 */
 	private $element;
+	
+	/**
+	 * Which character is this GF junctioned to
+	 * 
+	 * @var neon1024\Entity\Character\Character
+	 */
+	private $junctionedBy = null;
 	
 	/**
 	 * Collection of available junctions for the GF
@@ -145,5 +154,23 @@ class GuardianForce {
 	 */
 	protected function setAbilities(array $abilities) {
 		$this->abilities = $abilities;
+	}
+	
+	/**
+	 * Set this GF as junctioned to a character
+	 * 
+	 * @param \neon1024\Entity\Character\Character $character
+	 */
+	public function setJunctionTo(Character $character) {
+		$this->junctionedBy = $character;
+	}
+	
+	/**
+	 * Find out which character this GF is junctioned to
+	 * 
+	 * @return Character
+	 */
+	public function getJunctionedBy() {
+		return $this->junctionedBy;
 	}
 }

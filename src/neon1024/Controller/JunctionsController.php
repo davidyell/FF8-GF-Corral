@@ -96,9 +96,14 @@ class JunctionsController {
 		$secondCharacter = $garden->getItem('Zell');
 		$thirdCharacter = $garden->getItem('Selphie');
 		
-		var_dump($firstCharacter);
 		// TODO: Start trying to junction GF's until a characters junctionable 
 		// array is empty, then try the next character.
+		foreach ($corral->getCollection() as $gf) {
+			if (!$gf->getJunctionedBy()) {
+				$firstCharacter->junction($gf);
+			}
+		}
+		var_dump($firstCharacter);
 		
 		// TODO: Advance to shuffling the GF's to prioritise certain junctions
 		// such as HP, Str, Vit, Spr, Mag, Hit, Eva, Luck

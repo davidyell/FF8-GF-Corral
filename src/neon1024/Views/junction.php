@@ -30,7 +30,13 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td></td>
+							<td>
+								<?php
+								foreach ($firstCharacter->getJunctionedGFs() as $gf) {
+									echo $gf->getName() . "<br>";
+								}
+								?>
+							</td>
 							<td></td>
 							<td></td>
 						</tr>
