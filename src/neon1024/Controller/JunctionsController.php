@@ -9,6 +9,7 @@ namespace neon1024\Controller;
 use neon1024\Repository\Garden;
 use neon1024\Repository\Corral;
 use neon1024\Repository\Party;
+use neon1024\Entity\Character\Character;
 
 class JunctionsController {
 	
@@ -87,37 +88,35 @@ class JunctionsController {
 		}
 		$corral = new Corral($file);
 		
-		$file = $this->defaults['characters'];
 		if (file_exists($this->userData['characters'])) {
-			$file = $this->userData['characters'];
+			$characterData = simplexml_load_file($this->userData['characters']);
+		} else {
+			$characterData = simplexml_load_file($this->defaults['characters']);
 		}
-		$garden = new Garden($file);
 		
-		$one = $garden->getItem('Squall');
-		$two = $garden->getItem('Zell');
-		$three = $garden->getItem('Selphie');
+		$one = new Character($characterData->Character[0]);
+		$two = new Character($characterData->Character[1]);
+		$three = new Character($characterData->Character[2]);
 		
 		$party = new Party($one, $two, $three);
 		
-		// TODO: Start trying to junction GF's until a characters junctionable 
-		// array is empty, then try the next character.
+		$statPriority = ['Spd-J', 'HP-J', 'Str-J', 'Vit-J', 'Spr-J', 'Mag-J'];
+		
 		foreach ($party as $character) {
 			foreach ($corral->getCollection() as $gf) {
 				if (!$gf->getJunctionedBy()) {
-					$character->junction($gf);
+					foreach ($statPriority as $stat) {
+						if ($gf->hasJunction($stat) && !in_array($stat, $character->getJunctionedStats())) {
+							$character->junction($gf);
+						}
+					}
 				}
 			}
-			var_dump($character);
 		}
 		
-		// TODO: Advance to shuffling the GF's to prioritise certain junctions
-		// such as HP, Str, Vit, Spr, Mag, Hit, Eva, Luck
-		
-		
 		$this->viewVars = [
-			'firstCharacter' => $firstCharacter,
-			'secondCharacter' => $secondCharacter,
-			'thirdCharacter' => $thirdCharacter
+			'party' => $party,
+			'corral' => $corral
 		];
 		
 		return require('../../src/neon1024/Views/junction.php');

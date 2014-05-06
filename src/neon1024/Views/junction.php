@@ -20,29 +20,63 @@
 			
 			<div class="row body">
 				
+				<h2>Suggested junctions</h2>
 				<table summary="Character junctions" class='table table-bordered'>
 					<thead>
 						<tr>
-							<th><?php echo $firstCharacter->getName();?></th>
-							<th><?php echo $secondCharacter->getName();?></th>
-							<th><?php echo $thirdCharacter->getName();?></th>
+							<?php foreach ($party->getCollection() as $character): ?>
+								<th><?php echo $character->getName();?></th>
+							<?php endforeach;?>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td>
-								<?php
-								foreach ($firstCharacter->getJunctionedGFs() as $gf) {
+							<?php
+							foreach ($party->getCollection() as $character) {
+								echo "<td>";
+								foreach ($character->getJunctionedGFs() as $gf) {
 									echo $gf->getName() . "<br>";
 								}
-								?>
-							</td>
-							<td></td>
-							<td></td>
+								echo "</td>";
+							}
+							?>
+						</tr>
+						<tr>
+							<?php
+							foreach ($party->getCollection() as $character) {
+								echo "<td>";
+								foreach ($character->getJunctionedStats() as $junction) {
+									$class = strtolower(rtrim($junction, '-J'));
+									echo "<span class='$class'>" . $junction . "</span><br>";
+								}
+								echo "</td>";
+							}
+							?>
+						</tr>
+						<tr>
+							<?php
+							foreach ($party->getCollection() as $character) {
+								echo "<td>";
+								foreach ($character->getJunctionedGFs() as $gf) {
+									foreach ($gf->getAbilities() as $ability) {
+										echo $ability . "<br>";
+									}
+								}
+								echo "</td>";
+							}
+							?>
 						</tr>
 					</tbody>
 				</table>
 				
+				<h2>Unjunctioned GFs</h2>
+				<?php
+				foreach ($corral->getCollection() as $gf) {
+					if (!$gf->getJunctionedBy()) {
+						echo $gf->getName() . "<br>";
+					}
+				}
+				?>
 			</div>
 			
 			<footer class="row">

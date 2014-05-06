@@ -26,7 +26,7 @@ class Character implements CharacterInferface {
 	private $junctionable = [];
 	
 	/**
-	 * Store a list of all this characters junctioned GFs
+	 * Store a list of all stats this character has junctioned
 	 * 
 	 * @var array
 	 */
