@@ -35,7 +35,7 @@
 							foreach ($party->getCollection() as $character) {
 								echo "<td>";
 								foreach ($character->getJunctionedGFs() as $gf) {
-									echo $gf->getName() . "<br>";
+									echo "<div class='gf'><img src='/assets/images/{$gf->getName()}.png'><br>{$gf->getName()}</div>";
 								}
 								echo "</td>";
 							}
@@ -48,6 +48,24 @@
 								foreach ($character->getJunctionedStats() as $junction) {
 									$class = strtolower(rtrim($junction, '-J'));
 									echo "<span class='$class'>" . $junction . "</span><br>";
+								}
+								echo "</td>";
+							}
+							?>
+						</tr>
+						<tr>
+							<?php
+							foreach ($party->getCollection() as $character) {
+								echo "<td>";
+								foreach ($character->getJunctionedGFs() as $gf) {
+									foreach ($gf->getJunctions() as $junction) {
+										if (preg_match('/(Elem|ST|Ability)/', $junction)) {
+											$extraJunctions[] = $junction;
+										}
+									}
+								}
+								foreach (array_unique($extraJunctions) as $junction) {
+									echo $junction . "<br>";
 								}
 								echo "</td>";
 							}
@@ -73,7 +91,7 @@
 				<?php
 				foreach ($corral->getCollection() as $gf) {
 					if (!$gf->getJunctionedBy()) {
-						echo $gf->getName() . "<br>";
+						echo "<div class='gf'><img src='/assets/images/{$gf->getName()}.png'><br>{$gf->getName()}</div>";
 					}
 				}
 				?>
