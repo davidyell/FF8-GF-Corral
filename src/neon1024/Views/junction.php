@@ -34,9 +34,9 @@
 							<?php
 							foreach ($party->getCollection() as $character) {
 								echo "<td>";
-								foreach ($character->getJunctionedGFs() as $gf) {
-									echo "<div class='gf'><img src='/assets/images/{$gf->getName()}.png'><br>{$gf->getName()}</div>";
-								}
+									foreach ($character->getJunctionedGFs() as $gf) {
+										echo "<div class='gf'><img src='/assets/images/{$gf->getName()}.png'><br>{$gf->getName()}</div>";
+									}
 								echo "</td>";
 							}
 							?>
@@ -45,10 +45,10 @@
 							<?php
 							foreach ($party->getCollection() as $character) {
 								echo "<td>";
-								foreach ($character->getJunctionedStats() as $junction) {
-									$class = strtolower(rtrim($junction, '-J'));
-									echo "<span class='$class'>" . $junction . "</span><br>";
-								}
+									foreach ($character->getJunctionedStats() as $junction) {
+										$class = strtolower(rtrim($junction, '-J'));
+										echo "<span class='$class'>$junction</span><br>";
+									}
 								echo "</td>";
 							}
 							?>
@@ -57,16 +57,22 @@
 							<?php
 							foreach ($party->getCollection() as $character) {
 								echo "<td>";
-								foreach ($character->getJunctionedGFs() as $gf) {
-									foreach ($gf->getJunctions() as $junction) {
-										if (preg_match('/(Elem|ST|Ability)/', $junction)) {
-											$extraJunctions[] = $junction;
+									foreach ($character->getJunctionedGFs() as $gf) {
+										foreach ($gf->getJunctions() as $junction) {
+											if (preg_match('/(Elem|ST|Ability)/', $junction)) {
+												$extraJunctions[] = $junction;
+											}
 										}
 									}
-								}
-								foreach (array_unique($extraJunctions) as $junction) {
-									echo $junction . "<br>";
-								}
+									if (isset($extraJunctions) && !empty($extraJunctions)) {
+										foreach (array_unique($extraJunctions) as $junction) {
+											if (preg_match('/(Ability)/', $junction)) {
+												echo "<span class='label label-info'>" . $junction . "</span><br>";
+											} else {
+												echo $junction . "<br>";
+											}
+										}
+									}
 								echo "</td>";
 							}
 							?>

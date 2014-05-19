@@ -59,6 +59,8 @@ class JunctionsController {
 	
 	/**
 	 * Index action
+	 * 
+	 * @return string
 	 */
 	public function index() {
 		$file = $this->defaults['gfs'];
@@ -81,6 +83,11 @@ class JunctionsController {
 		return require('../../src/neon1024/Views/index.php');
 	}
 	
+	/**
+	 * Automatically junction gfs to characters
+	 * 
+	 * @return string
+	 */
 	public function autoJunction() {
 		$file = $this->defaults['gfs'];
 		if (file_exists($this->userData['gfs'])) {
@@ -102,17 +109,36 @@ class JunctionsController {
 		
 		$statPriority = ['Spd-J', 'HP-J', 'Str-J', 'Vit-J', 'Spr-J', 'Mag-J'];
 		
+		
+		/**
+		 * First parse
+		 * Basic matching with no overlapping using the priority order
+		 */
 		foreach ($party as $character) {
 			foreach ($corral->getCollection() as $gf) {
 				if (!$gf->getJunctionedBy()) {
 					foreach ($statPriority as $stat) {
-						if ($gf->hasJunction($stat) && !in_array($stat, $character->getJunctionedStats())) {
-							$character->junction($gf);
+						// Find stats this character has already junctioned, which this GF can junction
+						if (empty(array_intersect($character->getJunctionedStats(), $gf->getJunctions()))) {
+							
+							// GF has the stat available to junction
+							if ($gf->hasJunction($stat) && !empty(array_intersect($character->getJunctionableStats(), $gf->getJunctions()))) {
+								$character->junction($gf);
+							}
 						}
 					}
 				}
 			}
 		}
+		
+		/**
+		 * Second parse
+		 * Match up characters without a full set of junctions first
+		 */
+		foreach ($party as $character) {
+			
+		}
+		
 		
 		$this->viewVars = [
 			'party' => $party,

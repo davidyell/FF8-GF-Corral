@@ -135,4 +135,13 @@ class Character implements CharacterInferface {
 	protected function setJunctionableStats($stats) {
 		$this->junctionable = $stats;
 	}
+	
+	/**
+	 * How many GFs does this character have junctioned
+	 * 
+	 * @return int
+	 */
+	public function getNumberOfGFsJunctioned() {
+		return count($this->junctionedGFs);
+	}
 }
