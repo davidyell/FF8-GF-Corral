@@ -83,7 +83,7 @@
 								echo "<td>";
 								foreach ($character->getJunctionedGFs() as $gf) {
 									foreach ($gf->getAbilities() as $ability) {
-										echo $ability . "<br>";
+										echo "<span class='label label-default'>$ability</span><br>";
 									}
 								}
 								echo "</td>";
@@ -94,6 +94,7 @@
 				</table>
 				
 				<h2>Unjunctioned GFs</h2>
+				<p>These are the GFs left over from the auto-junction. Feel free to junction them as you see fit.</p>
 				<?php
 				foreach ($corral->getCollection() as $gf) {
 					if (!$gf->getJunctionedBy()) {

@@ -109,7 +109,6 @@ class JunctionsController {
 		
 		$statPriority = ['Spd-J', 'HP-J', 'Str-J', 'Vit-J', 'Spr-J', 'Mag-J'];
 		
-		
 		/**
 		 * First parse
 		 * Basic matching with no overlapping using the priority order
@@ -119,6 +118,7 @@ class JunctionsController {
 				if (!$gf->getJunctionedBy()) {
 					foreach ($statPriority as $stat) {
 						// Find stats this character has already junctioned, which this GF can junction
+						// To elimiate the GF allowing prioritised junctioning
 						if (empty(array_intersect($character->getJunctionedStats(), $gf->getJunctions()))) {
 							
 							// GF has the stat available to junction
@@ -135,10 +135,18 @@ class JunctionsController {
 		 * Second parse
 		 * Match up characters without a full set of junctions first
 		 */
-		foreach ($party as $character) {
-			
-		}
+		$team = $party->getCollection();
+		usort($team, [$this, 'sortByJunctionable']);
 		
+		foreach ($team as $character) {
+			foreach ($corral->getCollection() as $gf) {
+				if (!$gf->getJunctionedBy()) {
+					if (!empty(array_intersect($character->getJunctionableStats(), $gf->getJunctions()))) {
+						$character->junction($gf);
+					}
+				}
+			}
+		}
 		
 		$this->viewVars = [
 			'party' => $party,
@@ -146,5 +154,16 @@ class JunctionsController {
 		];
 		
 		return require('../../src/neon1024/Views/junction.php');
+	}
+	
+	/**
+	 * Sort characters by the number of available junctions
+	 * 
+	 * @param \neon1024\Entity\Character\Character $a
+	 * @param \neon1024\Entity\Character\Character $b
+	 * @return int
+	 */
+	private function sortByJunctionable(Character $a, Character $b) {
+		return (count($a->getJunctionableStats()) < count($b->getJunctionableStats())) ? 1 : -1;
 	}
 }
