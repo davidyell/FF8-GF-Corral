@@ -34,6 +34,7 @@ class Bootstrap {
 				$controller->index();
 				break;
 			case '/junction':
+				require 'Controller/JunctionsController.php';
 				$controller = new Controller\JunctionsController();
 				$controller->autoJunction();
 				break;
