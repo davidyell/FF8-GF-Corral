@@ -4,15 +4,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Final Fantasy VIII - Guardian Force Corral</title>
 		
-		<link rel="stylesheet" href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/vendor/twbs/bootstrap/dist/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="/src/neon1024/Assets/css/style.css">
+		<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="/assets/css/style.css">
 		
     </head>
     <body>
 		<div class="container">
 			<header class="row">
 				<h1>Final Fantasy VIII - Guardian Force Corral</h1>
+				<nav>
+					<a href="junction" class="btn btn-primary">Auto-junction</a>
+				</nav>
 			</header>
 			
 			<div class="row body">
@@ -24,6 +27,7 @@
 							<?php foreach ($this->junctions as $junction) {
 								echo "<th>" . $junction . "</th>";
 							}?>
+							<th>Other junctions</th>
 							<th>Abilities</th>
 						</tr>
 					</thead>
@@ -31,7 +35,7 @@
 						<?php foreach ($this->viewVars['gfs']->getCollection() as $gf): ?>
 							<tr>
 								<td class='table-label'>
-									<img src='/src/neon1024/Assets/images/<?php echo $gf->getName();?>.png'>
+									<img src='/assets/images/<?php echo $gf->getName();?>.png'>
 									<?php echo $gf->getName(); ?>
 
 									<select name='character' id='<?php echo strtolower($gf->getName());?>' class='select-character'><option>Select character</option>
@@ -54,12 +58,19 @@
 									echo "</td>";
 								}
 								?>
-								<td class='extras'>
+								<td>
 									<?php
-									foreach ($gf->getJunctions() as $junction){
+									foreach ($gf->getJunctions() as $junction) {
 										if (preg_match('/(Elem|ST|Ability)/', $junction)) {
 											echo $junction . '<br>';
 										}
+									}
+									?>
+								</td>
+								<td>
+									<?php
+									foreach ($gf->getAbilities() as $ability) {
+										echo $ability . "<br>";
 									}
 									?>
 								</td>
@@ -76,7 +87,7 @@
 		</div>
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script src="/src/neon1024/Assets/js/common.js"></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/assets/js/common.js"></script>
     </body>
 </html>

@@ -5,7 +5,9 @@
  * @author David Yell <neon1024@gmail.com>
  */
 
-namespace neon1024\GuardianForces;
+namespace neon1024\Entity\GuardianForce;
+
+use neon1024\Entity\Character\Character;
 
 class GuardianForce {
 	
@@ -24,6 +26,13 @@ class GuardianForce {
 	private $element;
 	
 	/**
+	 * Which character is this GF junctioned to
+	 * 
+	 * @var neon1024\Entity\Character\Character
+	 */
+	private $junctionedBy = null;
+	
+	/**
 	 * Collection of available junctions for the GF
 	 * 
 	 * @var array
@@ -31,14 +40,22 @@ class GuardianForce {
 	private $junctions = [];
 	
 	/**
+	 * Collection of GFs abilities
+	 * 
+	 * @var array
+	 */
+	private $abilities = [];
+	
+	/**
 	 * Build a GF and assign it's data
 	 * 
 	 * @param SimpleXMLElement $data
 	 */
-	public function __construct($data) {
+	public function __construct(\SimpleXMLElement $data) {
 		$this->setName((string)$data->name);
 		$this->setElement((string)$data->element);
 		$this->setJunctions((array)$data->Junctions->junction);
+		$this->setAbilities((array)$data->Abilities->ability);
 	}
 	
 	/**
@@ -102,7 +119,10 @@ class GuardianForce {
 	 * @return boolean
 	 */
 	public function hasJunction($junction) {
-		if (in_array($junction . '-J', $this->junctions)) {
+		if (strpos($junction, '-J') === false) {
+			$junction = $junction . '-J';
+		}
+		if (in_array($junction, $this->junctions)) {
 			return true;
 		}
 		
@@ -118,4 +138,39 @@ class GuardianForce {
 		return $this->junctions;
 	}
 	
+	/**
+	 * Get a list of the GFs abilities
+	 * 
+	 * @return array
+	 */
+	public function getAbilities() {
+		return $this->abilities;
+	}
+	
+	/**
+	 * Set the GFs abilities
+	 * 
+	 * @param array $abilities
+	 */
+	protected function setAbilities(array $abilities) {
+		$this->abilities = $abilities;
+	}
+	
+	/**
+	 * Set this GF as junctioned to a character
+	 * 
+	 * @param \neon1024\Entity\Character\Character $character
+	 */
+	public function setJunctionTo(Character $character) {
+		$this->junctionedBy = $character;
+	}
+	
+	/**
+	 * Find out which character this GF is junctioned to
+	 * 
+	 * @return Character
+	 */
+	public function getJunctionedBy() {
+		return $this->junctionedBy;
+	}
 }

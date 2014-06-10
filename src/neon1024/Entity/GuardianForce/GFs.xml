@@ -11,6 +11,9 @@
 			<junction>Elem-Def-J</junction>
 			<junction>Elem-Def-Jx2</junction>
 		</Junctions>
+		<Abilities>
+			<ability>Card</ability>
+		</Abilities>
 	</GuardianForce>
 	
 	<GuardianForce>
@@ -24,6 +27,9 @@
 			<junction>Elem-Def-J</junction>
 			<junction>Elem-Def-Jx2</junction>
 		</Junctions>
+		<Abilities>
+			<ability>Doom</ability>
+		</Abilities>
 	</GuardianForce>
 	
 	<GuardianForce>
@@ -36,6 +42,9 @@
 			<junction>Elem-Def-J</junction>
 			<junction>Elem-Def-Jx2</junction>
 		</Junctions>
+		<Abilities>
+			<ability>Mad Rush</ability>
+		</Abilities>
 	</GuardianForce>
 	
 	<GuardianForce>
@@ -47,6 +56,9 @@
 			<junction>ST-Def-J</junction>
 			<junction>ST-Def-Jx2</junction>
 		</Junctions>
+		<Abilities>
+			<ability>Treatment</ability>
+		</Abilities>
 	</GuardianForce>
 	
 	<GuardianForce>
@@ -59,6 +71,9 @@
 			<junction>Elem-Atk-J</junction>
 			<junction>Elem-Def-J</junction>
 		</Junctions>
+		<Abilities>
+			<ability>Defend</ability>
+		</Abilities>
 	</GuardianForce>
 	
 	<GuardianForce>
@@ -70,6 +85,9 @@
 			<junction>Hit-J</junction>
 			<junction>Abilityx3</junction>
 		</Junctions>
+		<Abilities>
+			<ability>Darkside</ability>
+		</Abilities>
 	</GuardianForce>
 	
 	<GuardianForce>
@@ -95,6 +113,9 @@
 			<junction>Elem-Atk-J</junction>
 			<junction>Elem-Def-Jx2</junction>
 		</Junctions>
+		<Abilities>
+			<ability>Recover</ability>
+		</Abilities>
 	</GuardianForce>
 	
 	<GuardianForce>
@@ -107,6 +128,9 @@
 			<junction>Elem-Def-J</junction>
 			<junction>Elem-Def-Jx2</junction>
 		</Junctions>
+		<Abilities>
+			<ability>Absorb</ability>
+		</Abilities>
 	</GuardianForce>
 	
 	<GuardianForce>
@@ -137,6 +161,9 @@
 			<junction>Elem-Def-Jx4</junction>
 			<junction>Abilityx3</junction>
 		</Junctions>
+		<Abilities>
+			<ability>Revive</ability>
+		</Abilities>
 	</GuardianForce>
 	
 	<GuardianForce>
@@ -148,6 +175,10 @@
 			<junction>Elem-Def-Jx4</junction>
 			<junction>ST</junction>
 		</Junctions>
+		<Abilities>
+			<ability>Darkside</ability>
+			<ability>Absorb</ability>
+		</Abilities>
 	</GuardianForce>
 	
 	<GuardianForce>
@@ -165,13 +196,18 @@
 			<junction>Eva-J</junction>
 			<junction>Luck-J</junction>
 		</Junctions>
+		<Abilities>
+			<ability>Kamikaze</ability>
+		</Abilities>
 	</GuardianForce>
 	
 	<GuardianForce>
 		<name>Tonberry</name>
 		<element>None</element>
-		<Junctions>
-		</Junctions>
+		<Abilities>
+			<ability>LV Up</ability>
+			<ability>LV Down</ability>
+		</Abilities>
 	</GuardianForce>
 	
 	<GuardianForce>
@@ -182,6 +218,11 @@
 			<junction>Eva-J</junction>
 			<junction>Hit-J</junction>
 		</Junctions>
+		<Abilities>
+			<ability>Mad Rush</ability>
+			<ability>Darkside</ability>
+			<ability>Devour</ability>
+		</Abilities>
 	</GuardianForce>
 	
 </root>

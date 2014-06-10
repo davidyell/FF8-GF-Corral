@@ -22,15 +22,14 @@ table {
 	i.glyphicon.glyphicon-remove {
 		color: lighten($bad, 30%);
 	}
-	td {
-		&.hp { background-color: $hp; }
-		&.str { background-color: $str }
-		&.vit { background-color: $vit }
-		&.mag { background-color: $mag }
-		&.spr { background-color: $spr }
-		&.spd { background-color: $spd }
-		&.eva { background-color: $eva }
-		&.hit { background-color: $hit }
-		&.luck { background-color: $luck }
-	}
 }
+
+.hp { background-color: $hp; }
+.str { background-color: $str }
+.vit { background-color: $vit }
+.mag { background-color: $mag }
+.spr { background-color: $spr }
+.spd { background-color: $spd }
+.eva { background-color: $eva }
+.hit { background-color: $hit }
+.luck { background-color: $luck }

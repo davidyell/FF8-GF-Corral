@@ -18,6 +18,10 @@ header, div.body, footer {
 	padding: 10px;
 }
 
+header nav {
+	text-align: center;
+}
+
 table {
 	tr td {
 		text-align: center;
@@ -26,6 +30,7 @@ table {
 		}
 		select {
 			float: right;
+			margin-top: 12px;
 		}
 		img {
 			height: 40px;
@@ -37,4 +42,26 @@ table {
 			}
 		}
 	}
+}
+
+.table > tbody > tr > td {
+	vertical-align: middle;
+}
+
+table td span {
+	padding: 2px 4px;
+}
+
+div.gf {
+	float: left;
+	margin: 0 5px;
+	text-align: center;
+	img {
+		height: 40px;
+	}
+}
+
+span.hp, span.str, span.vit, span.mag, span.spr, span.spd, span.eva, span.hit, span.luck {
+	margin: 4px;
+	border-radius: 3px;
 }

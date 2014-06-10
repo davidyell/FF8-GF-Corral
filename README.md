@@ -24,8 +24,8 @@ The junctions that can be placed in the XML file are Case SenSiTive.
 * Hit-J
 * Luck-J
 
-##Development
-As this is in alpha and currently under development, most code will be in the [`develop` branch](https://github.com/davidyell/FF8-GF-Corral/tree/develop).
+## Development
+Further development should be undertaken in the develop branch.
 
 ##Credit
 David Yell <neon1024@gmail.com>  
