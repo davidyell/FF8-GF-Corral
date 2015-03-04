@@ -33,7 +33,8 @@ abstract class Repository implements RepositoryInterface {
 	 */
 	public function load($file) {
 		if (file_exists($file)) {
-			$this->xml = simplexml_load_file($file);
+			$xmlFile = file_get_contents($file);
+			$this->xml = simplexml_load_string($xmlFile);
 			
 			return true;
 		} else {

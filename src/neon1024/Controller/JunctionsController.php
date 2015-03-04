@@ -96,9 +96,11 @@ class JunctionsController {
 		$corral = new Corral($file);
 		
 		if (file_exists($this->userData['characters'])) {
-			$characterData = simplexml_load_file($this->userData['characters']);
+			$characterDataFile = file_get_contents($this->userData['characters']);
+			$characterData = simplexml_load_string($characterDataFile);
 		} else {
-			$characterData = simplexml_load_file($this->defaults['characters']);
+			$characterDataFile = file_get_contents($this->defaults['characters']);
+			$characterData = simplexml_load_string($characterDataFile);
 		}
 		
 		$one = new Character($characterData->Character[0]);
