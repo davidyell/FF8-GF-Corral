@@ -121,10 +121,12 @@ class JunctionsController {
 					foreach ($statPriority as $stat) {
 						// Find stats this character has already junctioned, which this GF can junction
 						// To elimiate the GF allowing prioritised junctioning
-						if (empty(array_intersect($character->getJunctionedStats(), $gf->getJunctions()))) {
+						$intersection = array_intersect($character->getJunctionedStats(), $gf->getJunctions()));
+						if (empty($intersection) {
 							
 							// GF has the stat available to junction
-							if ($gf->hasJunction($stat) && !empty(array_intersect($character->getJunctionableStats(), $gf->getJunctions()))) {
+							$intersection = array_intersect($character->getJunctionableStats(), $gf->getJunctions());
+							if ($gf->hasJunction($stat) && !empty($intersection)) {
 								$character->junction($gf);
 							}
 						}
@@ -143,7 +145,8 @@ class JunctionsController {
 		foreach ($team as $character) {
 			foreach ($corral->getCollection() as $gf) {
 				if (!$gf->getJunctionedBy()) {
-					if (!empty(array_intersect($character->getJunctionableStats(), $gf->getJunctions()))) {
+					$intersection = array_intersect($character->getJunctionableStats(), $gf->getJunctions());
+					if (!empty($intersection)) {
 						$character->junction($gf);
 					}
 				}
