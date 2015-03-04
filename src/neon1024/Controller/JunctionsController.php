@@ -121,8 +121,8 @@ class JunctionsController {
 					foreach ($statPriority as $stat) {
 						// Find stats this character has already junctioned, which this GF can junction
 						// To elimiate the GF allowing prioritised junctioning
-						$intersection = array_intersect($character->getJunctionedStats(), $gf->getJunctions()));
-						if (empty($intersection) {
+						$intersection = array_intersect($character->getJunctionedStats(), $gf->getJunctions());
+						if (empty($intersection)) {
 							
 							// GF has the stat available to junction
 							$intersection = array_intersect($character->getJunctionableStats(), $gf->getJunctions());
