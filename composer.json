@@ -8,18 +8,17 @@
         }
     ],
     "require": {
-		"twbs/bootstrap": "dev-fat-13157"
+        "php": "~7.0",
+		"twbs/bootstrap": "^3.3"
     },
 	"require-dev": {
-		"phpunit/phpunit": "3.7.*@dev"
+		"phpunit/phpunit": "^6.0",
+		"squizlabs/php_codesniffer": "^2.8"
 	},
 	"autoload": {
 		"psr-4": {
 			"neon1024\\": "src/neon1024",
 			"test\\": "test"
 		}
-	},
-	"config": {
-		"bin-dir": "bin"
 	}
 }
