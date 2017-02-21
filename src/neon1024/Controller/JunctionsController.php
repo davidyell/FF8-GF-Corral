@@ -123,7 +123,7 @@ class JunctionsController
          * First parse
          * Basic matching with no overlapping using the priority order
          */
-        foreach ($party as $character) {
+        foreach ($party->getPartyMembers() as $character) {
             foreach ($corral->getCollection() as $gf) {
                 if (!$gf->getJunctionedBy()) {
                     foreach ($statPriority as $stat) {
