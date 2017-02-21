@@ -31,7 +31,7 @@ class GuardianForce
     /**
      * Which character is this GF junctioned to
      *
-     * @var \neon1024\Entity\Character\Character
+     * @var \neon1024\Entity\Character\Character|null
      */
     private $junctionedBy = null;
     
