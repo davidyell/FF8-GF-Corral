@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * Repository
  *
@@ -7,7 +9,7 @@
 namespace neon1024\Repository;
 
 use \Exception;
-use neon1024\Repository\RepositoryInterface;
+use SimpleXMLElement;
 
 abstract class Repository implements RepositoryInterface
 {
@@ -28,22 +30,20 @@ abstract class Repository implements RepositoryInterface
     /**
      * Load an xml file
      *
-     * @param type $file
-     * @throws Exception
+     * @param string $filePath The file to load
      * @return bool
+     * @throws \Exception
      */
-    public function load($file)
+    public function load(string $filePath): bool
     {
-        if (file_exists($file)) {
-            $xmlFile = file_get_contents($file);
+        if (file_exists($filePath)) {
+            $xmlFile = file_get_contents($filePath);
             $this->xml = simplexml_load_string($xmlFile);
             
             return true;
         } else {
             throw new Exception('No data found');
         }
-        
-        return false;
     }
     
     /**
@@ -52,7 +52,7 @@ abstract class Repository implements RepositoryInterface
      * @param string $name
      * @return object
      */
-    public function getItem($name)
+    public function getItem(string $name)
     {
         return $this->collection[$name];
     }
@@ -62,7 +62,7 @@ abstract class Repository implements RepositoryInterface
      *
      * @return array
      */
-    public function getCollection()
+    public function getCollection(): array
     {
         return $this->collection;
     }

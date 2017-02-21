@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * JunctionsController
  *
@@ -63,7 +65,7 @@ class JunctionsController
      *
      * @return string
      */
-    public function index()
+    public function index(): string
     {
         $file = $this->defaults['gfs'];
         if (file_exists($this->userData['gfs'])) {
@@ -90,7 +92,7 @@ class JunctionsController
      *
      * @return string
      */
-    public function autoJunction()
+    public function autoJunction(): string
     {
         $file = $this->defaults['gfs'];
         if (file_exists($this->userData['gfs'])) {
@@ -123,7 +125,7 @@ class JunctionsController
                 if (!$gf->getJunctionedBy()) {
                     foreach ($statPriority as $stat) {
                         // Find stats this character has already junctioned, which this GF can junction
-                        // To elimiate the GF allowing prioritised junctioning
+                        // To eliminate the GF allowing prioritised junctioning
                         $intersection = array_intersect($character->getJunctionedStats(), $gf->getJunctions());
                         if (empty($intersection)) {
                             // GF has the stat available to junction
@@ -170,7 +172,7 @@ class JunctionsController
      * @param \neon1024\Entity\Character\Character $b
      * @return int
      */
-    private function sortByJunctionable(Character $a, Character $b)
+    private function sortByJunctionable(Character $a, Character $b): int
     {
         return (count($a->getJunctionableStats()) < count($b->getJunctionableStats())) ? 1 : -1;
     }

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * GuardianForce
  *
@@ -29,7 +31,7 @@ class GuardianForce
     /**
      * Which character is this GF junctioned to
      *
-     * @var neon1024\Entity\Character\Character
+     * @var \neon1024\Entity\Character\Character
      */
     private $junctionedBy = null;
     
@@ -50,7 +52,7 @@ class GuardianForce
     /**
      * Build a GF and assign it's data
      *
-     * @param SimpleXMLElement $data
+     * @param \SimpleXMLElement $data
      */
     public function __construct(\SimpleXMLElement $data)
     {
@@ -65,7 +67,7 @@ class GuardianForce
      *
      * @param string $name
      */
-    protected function setName($name)
+    protected function setName(string $name)
     {
         $this->name = $name;
     }
@@ -75,17 +77,17 @@ class GuardianForce
      *
      * @return string
      */
-    public function getname()
+    public function getName(): string
     {
         return $this->name;
     }
     
     /**
-     * Set the GFs element or attack
+     * Set the GFs element
      *
      * @param string $element
      */
-    protected function setElement($element)
+    protected function setElement(string $element)
     {
         $this->element = $element;
     }
@@ -95,7 +97,7 @@ class GuardianForce
      *
      * @return string
      */
-    public function getElement()
+    public function getElement(): string
     {
         return $this->element;
     }
@@ -105,7 +107,7 @@ class GuardianForce
      *
      * @param array $junctions
      */
-    protected function setJunctions($junctions)
+    protected function setJunctions(array $junctions)
     {
         $this->junctions = $junctions;
     }
@@ -115,7 +117,7 @@ class GuardianForce
      *
      * @param string $junction
      */
-    public function addJunction($junction)
+    public function addJunction(string $junction)
     {
         $this->junctions = array_merge($this->junctions, [$junction]);
     }
@@ -126,7 +128,7 @@ class GuardianForce
      * @param string $junction
      * @return boolean
      */
-    public function hasJunction($junction)
+    public function hasJunction(string $junction): bool
     {
         if (strpos($junction, '-J') === false) {
             $junction = $junction . '-J';
@@ -143,7 +145,7 @@ class GuardianForce
      *
      * @return array
      */
-    public function getJunctions()
+    public function getJunctions(): array
     {
         return $this->junctions;
     }
@@ -153,7 +155,7 @@ class GuardianForce
      *
      * @return array
      */
-    public function getAbilities()
+    public function getAbilities(): array
     {
         return $this->abilities;
     }
@@ -181,9 +183,9 @@ class GuardianForce
     /**
      * Find out which character this GF is junctioned to
      *
-     * @return Character
+     * @return \neon1024\Entity\Character\Character
      */
-    public function getJunctionedBy()
+    public function getJunctionedBy(): Character
     {
         return $this->junctionedBy;
     }

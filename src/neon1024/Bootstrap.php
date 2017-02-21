@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * Bootstrap
  *
@@ -9,16 +11,6 @@ namespace neon1024;
 
 class Bootstrap
 {
-    
-    /**
-     * Bootstrap the application
-     *
-     * @return array
-     */
-    public function __construct()
-    {
-    }
-    
     /**
      * Dispatch the request to the correct controller
      *

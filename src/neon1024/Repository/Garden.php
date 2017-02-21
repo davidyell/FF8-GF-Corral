@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * Garden contains a collection of Characters
  *

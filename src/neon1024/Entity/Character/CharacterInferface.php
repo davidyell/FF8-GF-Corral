@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * CharacterInferface
  *
@@ -16,6 +18,7 @@ interface CharacterInferface
      * Junction a Guardian Force to the character
      *
      * @param GuardianForce $gf The name of the Guardian Force being junctioned
+     * @return \neon1024\Entity\Character\Character
      */
-    public function junction(GuardianForce $gf);
+    public function junction(GuardianForce $gf): Character;
 }

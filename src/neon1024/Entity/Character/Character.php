@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * Character
  *
@@ -43,7 +45,7 @@ class Character implements CharacterInferface
     /**
      * Build the character
      *
-     * @param SimpleXMLElement $data
+     * @param \SimpleXMLElement $data
      */
     public function __construct(\SimpleXMLElement $data)
     {
@@ -55,9 +57,9 @@ class Character implements CharacterInferface
      * Junction a GF to this character
      *
      * @param GuardianForce $gf
-     * @return \neon1024\Characters\Character
+     * @return \neon1024\Entity\Character\Character
      */
-    public function junction(GuardianForce $gf)
+    public function junction(GuardianForce $gf): Character
     {
         $this->junctionedGFs = array_merge($this->junctionedGFs, [$gf]);
         $gf->setJunctionTo($this);
@@ -75,7 +77,7 @@ class Character implements CharacterInferface
      *
      * @return array
      */
-    public function getJunctionedGFs()
+    public function getJunctionedGFs(): array
     {
         return $this->junctionedGFs;
     }
@@ -85,7 +87,7 @@ class Character implements CharacterInferface
      *
      * @return array
      */
-    public function getJunctionedStats()
+    public function getJunctionedStats(): array
     {
         return $this->junctioned;
     }
@@ -96,7 +98,7 @@ class Character implements CharacterInferface
      * @param string $junction
      * @return bool
      */
-    protected function setStatJunctioned($junction)
+    protected function setStatJunctioned(string $junction): bool
     {
         if (in_array($junction, $this->junctionable)) {
             $this->junctionable = array_diff($this->junctionable, [$junction]);
@@ -111,7 +113,7 @@ class Character implements CharacterInferface
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -121,7 +123,7 @@ class Character implements CharacterInferface
      *
      * @param string $name
      */
-    protected function setName($name)
+    protected function setName(string $name)
     {
         $this->name = $name;
     }
@@ -131,7 +133,7 @@ class Character implements CharacterInferface
      *
      * @return array
      */
-    public function getJunctionableStats()
+    public function getJunctionableStats(): array
     {
         return $this->junctionable;
     }
@@ -141,7 +143,7 @@ class Character implements CharacterInferface
      *
      * @param array $stats
      */
-    protected function setJunctionableStats($stats)
+    protected function setJunctionableStats(array $stats)
     {
         $this->junctionable = $stats;
     }
@@ -151,7 +153,7 @@ class Character implements CharacterInferface
      *
      * @return int
      */
-    public function getNumberOfGFsJunctioned()
+    public function getNumberOfGFsJunctioned(): int
     {
         return count($this->junctionedGFs);
     }

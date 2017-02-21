@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * RepositoryInterface
  *
@@ -8,21 +10,29 @@ namespace neon1024\Repository;
 
 interface RepositoryInterface
 {
-    
     /**
      * Load an XML file
+     *
+     * @param string $filePath Path to the XML file to load
+     * @return bool
+     * @throws \Exception When the file is not found or cannot be loaded
      */
-    public function load($file);
+    public function load(string $filePath): bool;
     
     /**
      * Get a single item from the collection
+     *
+     * @param string $name Item to find in the collection
+     * @return object
      */
-    public function getItem($name);
+    public function getItem(string $name);
     
     /**
      * Return the whole collection
+     *
+     * @return array
      */
-    public function getCollection();
+    public function getCollection(): array;
     
     /**
      * Populate the collection using the loaded xml data

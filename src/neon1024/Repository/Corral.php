@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * Corral contains a collection of GuardianForces
  *
@@ -6,7 +8,6 @@
  */
 namespace neon1024\Repository;
 
-use neon1024\Repository\Repository;
 use neon1024\Entity\GuardianForce\GuardianForce;
 
 class Corral extends Repository
