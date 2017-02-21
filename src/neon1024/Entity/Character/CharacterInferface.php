@@ -21,4 +21,13 @@ interface CharacterInferface
      * @return \neon1024\Entity\Character\Character
      */
     public function junction(GuardianForce $gf): Character;
+
+    /**
+     * Remove a Guardian Force from this Characters junctions
+     *
+     * @param \neon1024\Entity\GuardianForce\GuardianForce $gf
+     *
+     * @return \neon1024\Entity\Character\Character
+     */
+    public function unjunction(GuardianForce $gf): Character;
 }

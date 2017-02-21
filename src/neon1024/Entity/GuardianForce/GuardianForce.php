@@ -40,7 +40,7 @@ class GuardianForce
      *
      * @var array
      */
-    private $junctions = [];
+    private $statJunctions = [];
     
     /**
      * Collection of GFs abilities
@@ -58,7 +58,7 @@ class GuardianForce
     {
         $this->setName((string)$data->name);
         $this->setElement((string)$data->element);
-        $this->setJunctions((array)$data->Junctions->junction);
+        $this->setStatJunctions((array)$data->Junctions->junction);
         $this->setAbilities((array)$data->Abilities->ability);
     }
     
@@ -105,11 +105,21 @@ class GuardianForce
     /**
      * Set all the GFs junction abilities
      *
-     * @param array $junctions
+     * @param array $statJunctions
      */
-    protected function setJunctions(array $junctions)
+    protected function setStatJunctions(array $statJunctions)
     {
-        $this->junctions = $junctions;
+        $this->statJunctions = $statJunctions;
+    }
+
+    /**
+     * Get a list of all this GFs junction abilities
+     *
+     * @return array
+     */
+    public function getStatJunctions(): array
+    {
+        return $this->statJunctions;
     }
     
     /**
@@ -119,7 +129,7 @@ class GuardianForce
      */
     public function addJunction(string $junction)
     {
-        $this->junctions = array_merge($this->junctions, [$junction]);
+        $this->statJunctions = array_merge($this->statJunctions, [$junction]);
     }
     
     /**
@@ -133,21 +143,11 @@ class GuardianForce
         if (strpos($junction, '-J') === false) {
             $junction = $junction . '-J';
         }
-        if (in_array($junction, $this->junctions)) {
+        if (in_array($junction, $this->statJunctions)) {
             return true;
         }
         
         return false;
-    }
-    
-    /**
-     * Get a list of all this GFs junction abilities
-     *
-     * @return array
-     */
-    public function getJunctions(): array
-    {
-        return $this->junctions;
     }
     
     /**
@@ -173,17 +173,28 @@ class GuardianForce
     /**
      * Set this GF as junctioned to a character
      *
-     * @param \neon1024\Entity\Character\Character $character
+     * @param \neon1024\Entity\Character\Character $character Character instance to junction to
+     * @return void
      */
-    public function setJunctionTo(Character $character)
+    public function junctionTo(Character $character): void
     {
         $this->junctionedBy = $character;
+    }
+
+    /**
+     * Remove the character junctioned to this Guardian Force
+     *
+     * @return void
+     */
+    public function unjunction(): void
+    {
+        $this->junctionedBy = null;
     }
     
     /**
      * Find out which character this GF is junctioned to
      *
-     * @return \neon1024\Entity\Character\Character
+     * @return \neon1024\Entity\Character\Character|null
      */
     public function getJunctionedBy(): Character
     {

@@ -11,6 +11,7 @@ namespace neon1024\Entity\Character;
 
 use neon1024\Entity\Character\CharacterInferface;
 use neon1024\Entity\GuardianForce\GuardianForce;
+use neon1024\Repository\Corral;
 
 class Character implements CharacterInferface
 {
@@ -26,21 +27,21 @@ class Character implements CharacterInferface
      *
      * @var array
      */
-    private $junctionable = [];
+    private $junctionableStats = [];
     
     /**
      * Store a list of all stats this character has junctioned
      *
      * @var array
      */
-    private $junctioned = [];
+    private $junctionedStats = [];
     
     /**
-     * Collection of junctioned Guardian Forces
+     * Collection of junctioned Guardian Force instances, keyed by their name
      *
-     * @var array
+     * @var \neon1024\Repository\Corral
      */
-    private $junctionedGFs = [];
+    private $junctionedGFs;
     
     /**
      * Build the character
@@ -51,6 +52,7 @@ class Character implements CharacterInferface
     {
         $this->setName((string)$data->name);
         $this->setJunctionableStats((array)$data->Junctions->junction);
+        $this->junctionedGFs = new Corral();
     }
 
     /**
@@ -61,25 +63,42 @@ class Character implements CharacterInferface
      */
     public function junction(GuardianForce $gf): Character
     {
-        $this->junctionedGFs = array_merge($this->junctionedGFs, [$gf]);
-        $gf->setJunctionTo($this);
+        $this->junctionedGFs->addItem($gf);
+        $gf->junctionTo($this);
         
-        foreach ($gf->getJunctions() as $junction) {
+        foreach ($gf->getStatJunctions() as $junction) {
             $this->setStatJunctioned($junction);
         }
         
         return $this;
     }
+
+    /**
+     * Remove a juncitoned Guardian Force from this character
+     *
+     * @param \neon1024\Entity\GuardianForce\GuardianForce $gf Guardian force to unjunction
+     * @return \neon1024\Entity\Character\Character
+     */
+    public function unjunction(GuardianForce $gf): Character
+    {
+        $this->junctionedGFs->removeItem($gf->getName());
+        $gf->unjunction();
+
+        foreach ($gf->getStatJunctions() as $junction) {
+            $this->resetStatJunction($junction);
+        }
+
+        return $this;
+    }
     
     /**
-     * Get a list of the Guardian Forces which have been junctioned to this
-     * character
+     * Get a collection of the Guardian Forces which have been junctioned to this character
      *
      * @return array
      */
     public function getJunctionedGFs(): array
     {
-        return $this->junctionedGFs;
+        return $this->junctionedGFs->getCollection();
     }
 
     /**
@@ -89,22 +108,45 @@ class Character implements CharacterInferface
      */
     public function getJunctionedStats(): array
     {
-        return $this->junctioned;
+        return $this->junctionedStats;
     }
     
     /**
      * Set a stat as being junctioned
      *
-     * @param string $junction
+     * @param string $stat Name of the stat to junction
+     *
      * @return bool
      */
-    protected function setStatJunctioned(string $junction): bool
+    protected function setStatJunctioned(string $stat): bool
     {
-        if (in_array($junction, $this->junctionable)) {
-            $this->junctionable = array_diff($this->junctionable, [$junction]);
-            $this->junctioned[] = $junction;
+        if (in_array($stat, $this->junctionableStats)) {
+            $this->junctionableStats = array_diff($this->junctionableStats, [$stat]);
+            $this->junctionedStats[] = $stat;
+
             return true;
         }
+
+        return false;
+    }
+
+    /**
+     * Remove a junctioned stat and allow it to be junctioned again
+     *
+     * @param string $stat Name of the stat to unjunction
+     *
+     * @return bool
+     */
+    protected function resetStatJunction(string $stat): bool
+    {
+        $key = array_search($stat, $this->junctionedStats);
+        if ($key !== false) {
+            unset($this->junctionedStats[$key]);
+            $this->junctionableStats[] = $stat;
+
+            return true;
+        }
+
         return false;
     }
     
@@ -123,7 +165,7 @@ class Character implements CharacterInferface
      *
      * @param string $name
      */
-    protected function setName(string $name)
+    protected function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -135,7 +177,7 @@ class Character implements CharacterInferface
      */
     public function getJunctionableStats(): array
     {
-        return $this->junctionable;
+        return $this->junctionableStats;
     }
     
     /**
@@ -143,9 +185,9 @@ class Character implements CharacterInferface
      *
      * @param array $stats
      */
-    protected function setJunctionableStats(array $stats)
+    protected function setJunctionableStats(array $stats): void
     {
-        $this->junctionable = $stats;
+        $this->junctionableStats = $stats;
     }
     
     /**
@@ -155,6 +197,6 @@ class Character implements CharacterInferface
      */
     public function getNumberOfGFsJunctioned(): int
     {
-        return count($this->junctionedGFs);
+        return count($this->junctionedGFs->getCollection());
     }
 }

@@ -12,8 +12,14 @@ use PHPUnit\Framework\TestCase;
 
 class GardenTest extends TestCase
 {
-    
+    /**
+     * @var \neon1024\Repository\Garden
+     */
     public $Garden;
+
+    /**
+     * @var \neon1024\Entity\Character\Character
+     */
     public $Character;
     
     public function setUp()
@@ -21,20 +27,11 @@ class GardenTest extends TestCase
         parent::setUp();
         
         $file = __DIR__ . '/Fixture/Squall.xml';
-        $this->Garden = new Garden($file);
-        
         $character = simplexml_load_file($file);
         $this->Character = new Character($character->Character);
-    }
 
-    /**
-     * Test that the collection can be populated
-     */
-    public function testCanPopulateCollection()
-    {
-        $this->Garden->populate();
-        
-        $this->assertNotEmpty($this->Garden->getCollection());
+        $this->Garden = new Garden();
+        $this->Garden->addItem($this->Character);
     }
     
     /**
@@ -47,7 +44,23 @@ class GardenTest extends TestCase
         
         $this->assertEquals($expected, $result);
     }
-    
+
+    /**
+     * @expectedException \neon1024\Exceptions\NotFoundException
+     */
+    public function testGetNonExistantItem()
+    {
+        $this->Garden->getItem('Foo');
+    }
+
+    /**
+     * @expectedException \BadMethodCallException
+     */
+    public function testAddNonCharacterItem()
+    {
+        $this->Garden->addItem(['name' => 'Foo']);
+    }
+
     /**
      * Test that we can return the whole collection
      */
@@ -56,5 +69,51 @@ class GardenTest extends TestCase
         $result = $this->Garden->getCollection();
         
         $this->assertNotEmpty($result);
+    }
+
+    public function testRemoveAnItem()
+    {
+        $this->assertNotEmpty($this->Garden->getCollection());
+        $this->Garden->removeItem('Squall');
+        $this->assertEmpty($this->Garden->getCollection());
+    }
+
+    /**
+     * @expectedException \neon1024\Exceptions\NotFoundException
+     */
+    public function testRemovingNonExistantItem()
+    {
+        $this->assertNotEmpty($this->Garden->getCollection());
+        $this->Garden->removeItem('Foo');
+    }
+
+    public function testBuildGardenFromXml()
+    {
+        $file = __DIR__ . '/Fixture/Squall.xml';
+        $garden = new Garden();
+        $garden->loadFromXmlFile($file);
+
+        $this->assertNotEmpty($garden->getCollection());
+        $this->assertEquals($this->Character, $garden->getItem('Squall'));
+    }
+
+    /**
+     * @expectedException \neon1024\Exceptions\NotFoundException
+     */
+    public function testBuildGardenFromXmlWithNoFile()
+    {
+        $file = __DIR__ . '/Fixture/Typo.xml';
+        $garden = new Garden();
+        $garden->loadFromXmlFile($file);
+    }
+
+    /**
+     * @expectedException \neon1024\Exceptions\InvalidXmlException
+     */
+    public function testBuildGardenFromXmlWithInvalidFile()
+    {
+        $file = __DIR__ . '/Fixture/Invalid.xml';
+        $garden = new Garden();
+        $garden->loadFromXmlFile($file);
     }
 }

@@ -14,11 +14,28 @@ interface RepositoryInterface
      * Load an XML file
      *
      * @param string $filePath Path to the XML file to load
-     * @return bool
-     * @throws \Exception When the file is not found or cannot be loaded
+     * @return void
+     * @throws \neon1024\Exceptions\NotFoundException When the file is not found
+     * @throws \neon1024\Exceptions\InvalidXmlException When the xml cannot be loaded
      */
-    public function load(string $filePath): bool;
-    
+    public function loadFromXmlFile(string $filePath): void;
+
+    /**
+     * Add an item to the Repository
+     *
+     * @param mixed $item The item to add to the collection
+     * @return RepositoryInterface
+     */
+    public function addItem($item);
+
+    /**
+     * Remove an item from the collection
+     *
+     * @param string $item Name of the item key to remove
+     * @return bool
+     */
+    public function removeItem(string $item): bool;
+
     /**
      * Get a single item from the collection
      *
@@ -33,9 +50,4 @@ interface RepositoryInterface
      * @return array
      */
     public function getCollection(): array;
-    
-    /**
-     * Populate the collection using the loaded xml data
-     */
-    public function populate();
 }

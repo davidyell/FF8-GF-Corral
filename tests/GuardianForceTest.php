@@ -58,7 +58,7 @@ class GuardianForceTest extends TestCase
     public function testHasJunctions()
     {
         $expected = ['HP-J', 'Vit-J', 'Mag-J', 'Elem-Atk-J', 'Elem-Def-J', 'Elem-Def-Jx2'];
-        $result = $this->GuardianForce->getJunctions();
+        $result = $this->GuardianForce->getStatJunctions();
         
         $this->assertEquals($expected, $result);
     }
@@ -88,7 +88,17 @@ class GuardianForceTest extends TestCase
         
         $this->assertEquals($expected, $result);
     }
-    
+
+    /**
+     * Ensure that the -J is appended
+     */
+    public function testHasAJunctionWithoutJ()
+    {
+        $result = $this->GuardianForce->hasJunction('Vit');
+
+        $this->assertEquals(true, $result);
+    }
+
     /**
      * Test that we can add a junction to the GF
      */
@@ -96,7 +106,7 @@ class GuardianForceTest extends TestCase
     {
         $this->GuardianForce->addJunction('Spr-J');
         
-        $this->assertContains('Spr-J', $this->GuardianForce->getJunctions());
+        $this->assertContains('Spr-J', $this->GuardianForce->getStatJunctions());
     }
     
     /**
@@ -106,8 +116,16 @@ class GuardianForceTest extends TestCase
     {
         $charData = simplexml_load_file(__DIR__ . '/Fixture/Squall.xml');
         $character = new Character($charData->Character);
-        $this->GuardianForce->setJunctionTo($character);
+        $this->GuardianForce->junctionTo($character);
         
         $this->assertNotEmpty($this->GuardianForce->getJunctionedBy());
+    }
+
+    public function testHasAbilities()
+    {
+        $expected = ['Card'];
+        $result = $this->GuardianForce->getAbilities();
+
+        $this->assertEquals($expected, $result);
     }
 }
