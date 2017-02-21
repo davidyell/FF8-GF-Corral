@@ -6,7 +6,9 @@
  */
 namespace tests;
 
-class RepositoryTest extends \PHPUnit_Framework_Testcase {
+use PHPUnit\Framework\TestCase;
+
+class RepositoryTest extends Testcase {
 	
 	public $Repository;
 	
@@ -35,7 +37,7 @@ class RepositoryTest extends \PHPUnit_Framework_Testcase {
 	/**
 	 * Test that a bad file throws an exception
 	 * 
-	 * @expectedException Exception
+	 * @expectedException \Exception
 	 */
 	public function testBadFileLoad() {
 		$file = 'badfile.xml';

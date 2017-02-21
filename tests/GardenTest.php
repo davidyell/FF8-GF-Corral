@@ -6,10 +6,11 @@
  */
 namespace tests;
 
-use neon1024\Entity\Character\Garden;
 use neon1024\Entity\Character\Character;
+use neon1024\Repository\Garden;
+use PHPUnit\Framework\TestCase;
 
-class GardenTest extends \PHPUnit_Framework_TestCase {
+class GardenTest extends TestCase {
 	
 	public $Garden;
 	public $Character;

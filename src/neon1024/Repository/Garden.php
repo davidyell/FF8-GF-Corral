@@ -6,7 +6,6 @@
  */
 namespace neon1024\Repository;
 
-use neon1024\Repository\Repository;
 use neon1024\Entity\Character\Character;
 
 class Garden extends Repository

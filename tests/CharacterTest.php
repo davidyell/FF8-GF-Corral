@@ -8,8 +8,9 @@ namespace tests;
 
 use \neon1024\Entity\Character\Character;
 use \neon1024\Entity\GuardianForce\GuardianForce;
+use PHPUnit\Framework\TestCase;
 
-class CharacterTest extends \PHPUnit_Framework_TestCase {
+class CharacterTest extends TestCase {
 	
 	public $Character;
 	public $GuardianForce;
