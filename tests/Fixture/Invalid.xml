@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+!invalid
+	<Character>
+		<name>Squall</name>
+		<image>squall.png</image>
+		<Junctions>
+			<junction>HP-J</junction>
+			<junction>Str-J</junction>
+			<junction>Vit-J</junction>
+			<junction>Mag-J</junction>
+			<junction>Spr-J</junction>
+			<junction>Spd-J</junction>
+			<junction>Eva-J</junction>
+			<junction>Hit-J</junction>
+			<junction>Luck-J</junction>
+		</Junctions>
+	</Character>
+</root>
