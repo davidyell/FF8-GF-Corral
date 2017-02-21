@@ -196,7 +196,7 @@ class GuardianForce
      *
      * @return \neon1024\Entity\Character\Character|null
      */
-    public function getJunctionedBy(): Character
+    public function getJunctionedBy()
     {
         return $this->junctionedBy;
     }

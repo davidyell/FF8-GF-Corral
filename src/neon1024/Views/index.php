@@ -66,7 +66,7 @@
                                 ?>
                                 <td>
                                     <?php
-                                    foreach ($gf->getJunctions() as $junction) {
+                                    foreach ($gf->getStatJunctions() as $junction) {
                                         if (preg_match('/(Elem|ST|Ability)/', $junction)) {
                                             echo $junction . '<br>';
                                         }

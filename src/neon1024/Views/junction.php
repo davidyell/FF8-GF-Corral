@@ -24,7 +24,7 @@
 				<table summary="Character junctions" class='table table-bordered'>
 					<thead>
 						<tr>
-							<?php foreach ($party->getCollection() as $character) : ?>
+							<?php foreach ($party->getPartyMembers() as $character) : ?>
                                 <th><?php echo $character->getName();?></th>
                             <?php endforeach;?>
                         </tr>
@@ -32,7 +32,7 @@
                     <tbody>
                         <tr>
                             <?php
-                            foreach ($party->getCollection() as $character) {
+                            foreach ($party->getPartyMembers() as $character) {
                                 echo "<td>";
                                 foreach ($character->getJunctionedGFs() as $gf) {
                                     echo "<div class='gf'>";
@@ -45,7 +45,7 @@
                         </tr>
                         <tr>
                             <?php
-                            foreach ($party->getCollection() as $character) {
+                            foreach ($party->getPartyMembers() as $character) {
                                 echo "<td>";
                                 foreach ($character->getJunctionedStats() as $junction) {
                                     $class = strtolower(rtrim($junction, '-J'));
@@ -57,10 +57,10 @@
                         </tr>
                         <tr>
                             <?php
-                            foreach ($party->getCollection() as $character) {
+                            foreach ($party->getPartyMembers() as $character) {
                                 echo "<td>";
                                 foreach ($character->getJunctionedGFs() as $gf) {
-                                    foreach ($gf->getJunctions() as $junction) {
+                                    foreach ($gf->getStatJunctions() as $junction) {
                                         if (preg_match('/(Elem|ST|Ability)/', $junction)) {
                                             $extraJunctions[] = $junction;
                                         }
@@ -81,7 +81,7 @@
                         </tr>
                         <tr>
                             <?php
-                            foreach ($party->getCollection() as $character) {
+                            foreach ($party->getPartyMembers() as $character) {
                                 echo "<td>";
                                 foreach ($character->getJunctionedGFs() as $gf) {
                                     foreach ($gf->getAbilities() as $ability) {

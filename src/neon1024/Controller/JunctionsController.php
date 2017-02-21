@@ -65,19 +65,21 @@ class JunctionsController
      *
      * @return string
      */
-    public function index(): string
+    public function index()
     {
         $file = $this->defaults['gfs'];
         if (file_exists($this->userData['gfs'])) {
             $file = $this->userData['gfs'];
         }
-        $corral = new Corral($file);
+        $corral = new Corral();
+        $corral->loadFromXmlFile($file);
         
         $file = $this->defaults['characters'];
         if (file_exists($this->userData['characters'])) {
             $file = $this->userData['characters'];
         }
-        $garden = new Garden($file);
+        $garden = new Garden();
+        $garden->loadFromXmlFile($file);
         
         $this->viewVars = [
             'chars' => $garden,
@@ -92,13 +94,14 @@ class JunctionsController
      *
      * @return string
      */
-    public function autoJunction(): string
+    public function autoJunction()
     {
         $file = $this->defaults['gfs'];
         if (file_exists($this->userData['gfs'])) {
             $file = $this->userData['gfs'];
         }
-        $corral = new Corral($file);
+        $corral = new Corral();
+        $corral->loadFromXmlFile($file);
         
         if (file_exists($this->userData['characters'])) {
             $characterDataFile = file_get_contents($this->userData['characters']);
@@ -126,10 +129,10 @@ class JunctionsController
                     foreach ($statPriority as $stat) {
                         // Find stats this character has already junctioned, which this GF can junction
                         // To eliminate the GF allowing prioritised junctioning
-                        $intersection = array_intersect($character->getJunctionedStats(), $gf->getJunctions());
+                        $intersection = array_intersect($character->getJunctionedStats(), $gf->getStatJunctions());
                         if (empty($intersection)) {
                             // GF has the stat available to junction
-                            $intersection = array_intersect($character->getJunctionableStats(), $gf->getJunctions());
+                            $intersection = array_intersect($character->getJunctionableStats(), $gf->getStatJunctions());
                             if ($gf->hasJunction($stat) && !empty($intersection)) {
                                 $character->junction($gf);
                             }
@@ -143,13 +146,13 @@ class JunctionsController
          * Second parse
          * Match up characters without a full set of junctions first
          */
-        $team = $party->getCollection();
+        $team = $party->getPartyMembers();
         usort($team, [$this, 'sortByJunctionable']);
         
         foreach ($team as $character) {
             foreach ($corral->getCollection() as $gf) {
                 if (!$gf->getJunctionedBy()) {
-                    $intersection = array_intersect($character->getJunctionableStats(), $gf->getJunctions());
+                    $intersection = array_intersect($character->getJunctionableStats(), $gf->getStatJunctions());
                     if (!empty($intersection)) {
                         $character->junction($gf);
                     }
