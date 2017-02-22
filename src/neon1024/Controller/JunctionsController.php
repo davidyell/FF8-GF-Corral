@@ -8,14 +8,13 @@ declare(strict_types=1);
  */
 namespace neon1024\Controller;
 
-use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Psr7\Stream;
 use neon1024\Lib\Junctioner;
 use neon1024\Lib\Stats;
 use neon1024\Repository\Garden;
 use neon1024\Repository\Corral;
 use neon1024\Repository\Party;
 use neon1024\Entity\Character\Character;
+use Zend\Diactoros\Response;
 
 class JunctionsController
 {
@@ -50,7 +49,7 @@ class JunctionsController
     /**
      * Index action
      *
-     * @return \GuzzleHttp\Psr7\Response;
+     * @return \Zend\Diactoros\Response
      */
     public function index(): Response
     {
@@ -74,9 +73,8 @@ class JunctionsController
             'gfs' => $corral,
         ];
 
-        $stream = new Stream(require('../../src/neon1024/Views/index.php'));
         $response = new Response();
-        $response = $response->withBody($stream);
+        $response->getBody()->write(require('../../src/neon1024/Views/index.php'));
 
         return $response;
     }
@@ -84,7 +82,7 @@ class JunctionsController
     /**
      * Automatically junction gfs to characters
      *
-     * @return \GuzzleHttp\Psr7\Response;
+     * @return \Zend\Diactoros\Response
      */
     public function autoJunction(): Response
     {
@@ -118,9 +116,8 @@ class JunctionsController
             'corral' => $junctioner->corral,
         ];
 
-        $stream = new Stream(require('../../src/neon1024/Views/junction.php'));
         $response = new Response();
-        $response = $response->withBody($stream);
+        $response->getBody()->write(require('../../src/neon1024/Views/junction.php'));
 
         return $response;
     }

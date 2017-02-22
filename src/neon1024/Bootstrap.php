@@ -10,26 +10,27 @@ declare(strict_types=1);
 namespace neon1024;
 
 use neon1024\Controller\JunctionsController;
+use Zend\Diactoros\Response;
+use Zend\Diactoros\ServerRequest;
 
 class Bootstrap
 {
     /**
      * Dispatch the request to the correct controller
      *
-     * @param string $url
+     * @param \Zend\Diactoros\ServerRequest $request
+     * @return \Zend\Diactoros\Response
      */
-    public function dispatch($url)
+    public function dispatch(ServerRequest $request): Response
     {
-        switch ($url) {
+        switch ($request->getUri()->getPath()) {
             case '/':
             default:
                 $controller = new JunctionsController();
-                $controller->index();
-                break;
+                return $controller->index();
             case '/junction':
                 $controller = new JunctionsController();
-                $controller->autoJunction();
-                break;
+                return $controller->autoJunction();
         }
     }
 }
