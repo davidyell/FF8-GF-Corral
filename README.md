@@ -22,6 +22,12 @@ Then you can either configure your web server to run the application or run it u
 cd web/public && php -S localhost:4040
 ```
 
+There is a test suite which can be run with
+ 
+```bash
+vendor/bin/phpunit
+```
+
 ## Configuration
 There are two XML files which hold the data for the Characters and GF's. You can edit these files by copying them from `src/neon1024/Characters/Characters.xml` and `src/neon1024/GuardianForces/GFs.xml` and placing copies into the `config` directory. Here they can be edited to match your current GF configs.  
 If you have removed or added new abilities to your GF's using items, you will want to customise the `GFs.xml` file to match.  
