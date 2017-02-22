@@ -29,7 +29,10 @@ vendor/bin/phpunit
 ```
 
 ## Configuration
-There are two XML files which hold the data for the Characters and GF's. You can edit these files by copying them from `src/neon1024/Characters/Characters.xml` and `src/neon1024/GuardianForces/GFs.xml` and placing copies into the `config` directory. Here they can be edited to match your current GF configs.  
+There are two XML files which hold the data for the Characters and GF's. You can edit these files by copying them from 
+`src/neon1024/Characters/Characters.xml` and `src/neon1024/GuardianForces/GFs.xml` and placing copies into the `config` 
+directory. Here they can be edited to match your current GF configs.  
+
 If you have removed or added new abilities to your GF's using items, you will want to customise the `GFs.xml` file to match.  
 
 The junctions that can be placed in the XML file are Case SenSiTive.  
