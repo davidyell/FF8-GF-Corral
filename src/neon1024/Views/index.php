@@ -60,8 +60,6 @@
                                     echo "<td class='" . strtolower($junction) . "'>";
                                     if ($gf->hasJunction($junction)) {
                                         echo "<i class='glyphicon glyphicon-ok'></i>";
-                                    } else {
-//											echo "<i class='glyphicon glyphicon-remove'></i>";
                                     }
                                     echo "</td>";
                                 }
