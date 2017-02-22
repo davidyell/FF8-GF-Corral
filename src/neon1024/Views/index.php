@@ -25,7 +25,7 @@
 						<tr>
 							<th>GF</th>
 							<?php
-                            foreach ($this->junctions as $junction) {
+                            foreach ($this->viewVars['junctions'] as $junction) {
                                 echo "<th class='stat'>" . $junction . "</th>";
                             }
                             ?>

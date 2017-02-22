@@ -8,6 +8,8 @@ declare(strict_types=1);
  */
 namespace neon1024\Controller;
 
+use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Psr7\Stream;
 use neon1024\Lib\Junctioner;
 use neon1024\Repository\Garden;
 use neon1024\Repository\Corral;
@@ -16,7 +18,24 @@ use neon1024\Entity\Character\Character;
 
 class JunctionsController
 {
-    
+
+    /**
+     * List of all junctionable stats used in the view
+     *
+     * @var array
+     */
+    private $junctions = [
+        'HP',
+        'Str',
+        'Vit',
+        'Mag',
+        'Spr',
+        'Spd',
+        'Eva',
+        'Hit',
+        'Luck'
+    ];
+
     /**
      * Array of variables for the view
      *
@@ -47,9 +66,9 @@ class JunctionsController
     /**
      * Index action
      *
-     * @return string
+     * @return \GuzzleHttp\Psr7\Response;
      */
-    public function index()
+    public function index(): Response
     {
         $file = $this->defaults['gfs'];
         if (file_exists($this->userData['gfs'])) {
@@ -64,21 +83,26 @@ class JunctionsController
         }
         $garden = new Garden();
         $garden->loadFromXmlFile($file);
-        
+
         $this->viewVars = [
+            'junctions' => $this->junctions,
             'chars' => $garden,
-            'gfs' => $corral
+            'gfs' => $corral,
         ];
-        
-        return require('../../src/neon1024/Views/index.php');
+
+        $stream = new Stream(require('../../src/neon1024/Views/index.php'));
+        $response = new Response();
+        $response = $response->withBody($stream);
+
+        return $response;
     }
     
     /**
      * Automatically junction gfs to characters
      *
-     * @return string
+     * @return \GuzzleHttp\Psr7\Response;
      */
-    public function autoJunction()
+    public function autoJunction(): Response
     {
         $file = $this->defaults['gfs'];
         if (file_exists($this->userData['gfs'])) {
@@ -109,7 +133,11 @@ class JunctionsController
             'party' => $junctioner->party,
             'corral' => $junctioner->corral,
         ];
-        
-        return require('../../src/neon1024/Views/junction.php');
+
+        $stream = new Stream(require('../../src/neon1024/Views/junction.php'));
+        $response = new Response();
+        $response = $response->withBody($stream);
+
+        return $response;
     }
 }
