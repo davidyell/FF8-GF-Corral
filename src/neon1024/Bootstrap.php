@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace neon1024;
 
+use neon1024\Controller\JunctionsController;
+
 class Bootstrap
 {
     /**
@@ -21,13 +23,11 @@ class Bootstrap
         switch ($url) {
             case '/':
             default:
-                require 'Controller/JunctionsController.php';
-                $controller = new Controller\JunctionsController();
+                $controller = new JunctionsController();
                 $controller->index();
                 break;
             case '/junction':
-                require 'Controller/JunctionsController.php';
-                $controller = new Controller\JunctionsController();
+                $controller = new JunctionsController();
                 $controller->autoJunction();
                 break;
         }
