@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /**
  * Junctioner.php
  *
@@ -16,21 +16,6 @@ use neon1024\Repository\Party;
 
 class Junctioner
 {
-    /**
-     * In which order should the stats be junctioned
-     *
-     * @var array
-     */
-    public $statPriority = [
-        'Spd-J',
-        'HP-J',
-        'Str-J',
-        'Vit-J',
-        'Spr-J',
-        'Mag-J',
-        'Luck-J',
-        'Eva-J',
-    ];
 
     /**
      * @var \neon1024\Repository\Party $party Party of Character instances
@@ -68,7 +53,7 @@ class Junctioner
             foreach ($this->corral->getCollection() as $gf) {
                 if ($gf->getJunctionedBy() === null) {
                     if ($priority) {
-                        foreach ($this->statPriority as $stat) {
+                        foreach (Stats::autoJunctionList() as $stat) {
                             if ($this->characterSharesJunctionStatWithGuardianForce($character, $gf, $stat)
                                 && $this->characterStatAlreadyJunctioned($character, $stat) === false) {
                                 $character->junction($gf);

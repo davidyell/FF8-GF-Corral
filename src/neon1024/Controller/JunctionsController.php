@@ -11,6 +11,7 @@ namespace neon1024\Controller;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Stream;
 use neon1024\Lib\Junctioner;
+use neon1024\Lib\Stats;
 use neon1024\Repository\Garden;
 use neon1024\Repository\Corral;
 use neon1024\Repository\Party;
@@ -18,23 +19,6 @@ use neon1024\Entity\Character\Character;
 
 class JunctionsController
 {
-
-    /**
-     * List of all junctionable stats used in the view
-     *
-     * @var array
-     */
-    private $junctions = [
-        'HP',
-        'Str',
-        'Vit',
-        'Mag',
-        'Spr',
-        'Spd',
-        'Eva',
-        'Hit',
-        'Luck'
-    ];
 
     /**
      * Array of variables for the view
@@ -85,7 +69,7 @@ class JunctionsController
         $garden->loadFromXmlFile($file);
 
         $this->viewVars = [
-            'junctions' => $this->junctions,
+            'junctions' => Stats::list(),
             'chars' => $garden,
             'gfs' => $corral,
         ];

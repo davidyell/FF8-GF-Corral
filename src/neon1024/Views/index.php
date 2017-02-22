@@ -26,7 +26,7 @@
 							<th>GF</th>
 							<?php
                             foreach ($this->viewVars['junctions'] as $junction) {
-                                echo "<th class='stat'>" . $junction . "</th>";
+                                echo "<th class='stat'>" . rtrim($junction, '-J') . "</th>";
                             }
                             ?>
                             <th>Other junctions</th>
@@ -56,8 +56,8 @@
                                 </td>
                                 
                                 <?php
-                                foreach ($this->junctions as $junction) {
-                                    echo "<td class='" . strtolower($junction) . "'>";
+                                foreach ($this->viewVars['junctions'] as $junction) {
+                                    echo "<td class='" . strtolower(rtrim($junction, '-J')) . "'>";
                                     if ($gf->hasJunction($junction)) {
                                         echo "<i class='glyphicon glyphicon-ok'></i>";
                                     }
