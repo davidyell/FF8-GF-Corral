@@ -9,59 +9,65 @@
  * Layout
  */
 body {
-	background-color: $bg;
+  background-color: $bg;
 }
+
 .container {
-	background-color: $fg;
+  background-color: $fg;
 }
+
 header, div.body, footer {
-	padding: 10px;
+  padding: 10px;
 }
 
 header nav {
-	text-align: center;
+  text-align: center;
 }
 
 table {
-	tr td {
-		text-align: center;
-		&.table-label {
-			text-align: left;
-		}
-		select {
-			float: right;
-			margin-top: 12px;
-		}
-		img {
-			height: 40px;
-			&.junctioned {
-				padding: 2px;
-				background-color: #fff;
-				border-radius: 3px;
-				border: 1px solid darken($bg, 20%);
-			}
-		}
-	}
+  tr {
+    th.stat {
+      width: 60px;
+    }
+    td {
+      text-align: center;
+      &.table-label {
+        text-align: left;
+      }
+      select {
+        float: right;
+        margin-top: 12px;
+      }
+      img {
+        height: 40px;
+        &.junctioned {
+          padding: 2px;
+          background-color: #fff;
+          border-radius: 3px;
+          border: 1px solid darken($bg, 20%);
+        }
+      }
+      span {
+        padding: 2px 4px;
+      }
+    }
+  }
 }
 
 .table > tbody > tr > td {
-	vertical-align: middle;
-}
-
-table td span {
-	padding: 2px 4px;
+  vertical-align: middle;
 }
 
 div.gf {
-	float: left;
-	margin: 0 5px;
-	text-align: center;
-	img {
-		height: 40px;
-	}
+  float: left;
+  margin: 0 5px;
+  text-align: center;
+  img {
+    height: 40px;
+  }
 }
 
 span.hp, span.str, span.vit, span.mag, span.spr, span.spd, span.eva, span.hit, span.luck {
-	margin: 4px;
-	border-radius: 3px;
+  margin: 4px;
+  border-radius: 3px;
 }
