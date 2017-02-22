@@ -79,6 +79,5 @@ class JunctionerTest extends TestCase
         $this->assertNotEmpty($this->party->getMemberByName('Squall')->getJunctionedStats());
         $this->assertNotEmpty($this->party->getMemberByName('Rinoa')->getJunctionedStats());
         $this->assertNotEmpty($this->party->getMemberByName('Quistis')->getJunctionedStats());
-
     }
 }

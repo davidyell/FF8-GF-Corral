@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace neon1024\Entity\Character;
 
-use neon1024\Entity\Character\CharacterInferface;
 use neon1024\Entity\GuardianForce\GuardianForce;
 use neon1024\Repository\Corral;
 
