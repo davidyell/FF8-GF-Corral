@@ -10,6 +10,7 @@
 namespace neon1024\Lib;
 
 use neon1024\Entity\Character\Character;
+use neon1024\Entity\GuardianForce\GuardianForce;
 use neon1024\Repository\Corral;
 use neon1024\Repository\Party;
 
@@ -26,76 +27,120 @@ class Junctioner
         'Str-J',
         'Vit-J',
         'Spr-J',
-        'Mag-J'
+        'Mag-J',
+        'Luck-J',
+        'Eva-J',
     ];
 
     /**
-     * Junction a Corral of Guardian Forces to a Party of Characters
+     * @var \neon1024\Repository\Party $party Party of Character instances
+     */
+    public $party;
+
+    /**
+     * @var \neon1024\Repository\Corral $corral Corral of Guardian Force instances
+     */
+    public $corral;
+
+    /**
+     * Junctioner constructor.
      *
      * @param \neon1024\Repository\Party $party Party of Character instances
      * @param \neon1024\Repository\Corral $corral Corral of Guardian Force instances
-     *
-     * @return array Array of resulting party and corral
+     * @throws \BadMethodCallException
      */
-    public function party(Party $party, Corral $corral)
+    public function __construct(Party $party, Corral $corral)
     {
-        /**
-         * First parse
-         * Basic matching with no overlapping using the priority order
-         */
-        foreach ($party->getPartyMembers() as $character) {
-            foreach ($corral->getCollection() as $gf) {
-                if (!$gf->getJunctionedBy()) {
-                    foreach ($this->statPriority as $stat) {
-                        // Find stats this character has already junctioned, which this GF can junction
-                        // To eliminate the GF allowing prioritised junctioning
-                        $intersection = array_intersect($character->getJunctionedStats(), $gf->getStatJunctions());
-                        if (empty($intersection)) {
-                            // GF has the stat available to junction
-                            $intersection = array_intersect($character->getJunctionableStats(), $gf->getStatJunctions());
-                            if ($gf->hasJunction($stat) && !empty($intersection)) {
+        if (!$party instanceof Party) {
+            throw new \BadMethodCallException('Cannot junction without a Party instance.');
+        }
+        if (!$corral instanceof Corral) {
+            throw new \BadMethodCallException('Cannot junction without a Corral instance.');
+        }
+
+        $this->party = $party;
+        $this->corral = $corral;
+    }
+
+    /**
+     * Automatically junction the available Guardian Forces to the Characters in the Party.
+     *
+     * @param bool $priority Should GFs be junctioned prioritising the configured stats ordering
+     */
+    public function autojunction($priority = true)
+    {
+        $this->sortPartyByLeastJunctions();
+
+        foreach ($this->party->getPartyMembers() as $character) {
+            foreach ($this->corral->getCollection() as $gf) {
+                if ($gf->getJunctionedBy() === null) {
+                    if ($priority) {
+                        foreach ($this->statPriority as $stat) {
+                            if ($this->characterSharesJunctionStatWithGuardianForce($character, $gf, $stat)
+                                && $this->characterStatAlreadyJunctioned($character, $stat) === false) {
                                 $character->junction($gf);
                             }
+                        }
+                    } else {
+                        if ($this->characterSharesJunctionStatWithGuardianForce($character, $gf, null)) {
+                            $character->junction($gf);
                         }
                     }
                 }
             }
         }
-
-        /**
-         * Second parse
-         * Match up characters without a full set of junctions first
-         */
-        $team = $party->getPartyMembers();
-        usort($team, [$this, 'sortByJunctionable']);
-
-        foreach ($team as $character) {
-            foreach ($corral->getCollection() as $gf) {
-                if (!$gf->getJunctionedBy()) {
-                    $intersection = array_intersect($character->getJunctionableStats(), $gf->getStatJunctions());
-                    if (!empty($intersection)) {
-                        $character->junction($gf);
-                    }
-                }
-            }
-        }
-
-        return [
-            'party' => $party,
-            'corral' => $corral
-        ];
     }
 
     /**
-     * Sort characters by the number of available junctions
+     * Does the Character have a junctionable stat which the Guardian Force also has, but has not already been junctioned
+     * Can look for both any stat or a specific stat.
      *
-     * @param \neon1024\Entity\Character\Character $a
-     * @param \neon1024\Entity\Character\Character $b
-     * @return int
+     * @param \neon1024\Entity\Character\Character $character
+     * @param \neon1024\Entity\GuardianForce\GuardianForce $guardianForce
+     * @param string|null $stat
+     *
+     * @return bool
      */
-    private function sortByJunctionable(Character $a, Character $b): int
+    protected function characterSharesJunctionStatWithGuardianForce(Character $character, GuardianForce $guardianForce, ?string $stat): bool
     {
-        return (count($a->getJunctionableStats()) < count($b->getJunctionableStats())) ? 1 : -1;
+        $sharesJunctionableStat = array_intersect($character->getJunctionableStats(), $guardianForce->getStatJunctions());
+
+        if ($stat !== null && $guardianForce->hasJunction($stat) && !empty($sharesJunctionableStat)) {
+            return true;
+        }
+
+        if (!empty($intersection)) {
+            return true;
+        }
+
+        return false;
     }
 
+    /**
+     * Does a Character already have a specific stat junctioned
+     *
+     * @param \neon1024\Entity\Character\Character $character
+     * @param string $stat
+     *
+     * @return bool
+     */
+    protected function characterStatAlreadyJunctioned(Character $character, string $stat): bool
+    {
+        return in_array($stat, $character->getJunctionedStats());
+    }
+
+    /**
+     * Create a new Party instance with Characters with the least number of junctions are higher in the ordering.
+     *
+     * @return void
+     */
+    private function sortPartyByLeastJunctions(): void
+    {
+        $team = $this->party->getPartyMembers();
+        usort($team, function (Character $a, Character $b): int {
+            return (count($a->getJunctionableStats()) < count($b->getJunctionableStats())) ? 1 : -1;
+        });
+
+        $this->party = new Party($team[0], $team[1], $team[2]);
+    }
 }

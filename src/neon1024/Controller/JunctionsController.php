@@ -118,12 +118,13 @@ class JunctionsController
         
         $party = new Party($one, $two, $three);
 
-        $junctioner = new Junctioner();
-        $junctionResult = $junctioner->party($party, $corral);
-        
+        $junctioner = new Junctioner($party, $corral);
+        $junctioner->autojunction(true);
+        $junctioner->autojunction(false);
+
         $this->viewVars = [
-            'party' => $junctionResult['party'],
-            'corral' => $junctionResult['corral'],
+            'party' => $junctioner->party,
+            'corral' => $junctioner->corral,
         ];
         
         return require('../../src/neon1024/Views/junction.php');

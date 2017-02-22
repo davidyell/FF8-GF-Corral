@@ -25,8 +25,8 @@
 						<tr>
 							<th>GF</th>
 							<?php foreach ($this->junctions as $junction) {
-                                echo "<th>" . $junction . "</th>";
-}?>
+                                echo "<th class='stat'>" . $junction . "</th>";
+                            }?>
                             <th>Other junctions</th>
                             <th>Abilities</th>
                         </tr>
