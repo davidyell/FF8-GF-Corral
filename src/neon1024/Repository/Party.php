@@ -10,6 +10,7 @@ namespace neon1024\Repository;
 
 use neon1024\Entity\Character\Character;
 use neon1024\Exceptions\CharacterAlreadyInPartyException;
+use neon1024\Exceptions\NotFoundException;
 
 class Party
 {
@@ -40,6 +41,22 @@ class Party
     public function getPartyMembers(): array
     {
         return $this->partyMembers;
+    }
+
+    /**
+     * Get a specific Character from the Party
+     *
+     * @param string $name
+     * @return \neon1024\Entity\Character\Character
+     * @throws \neon1024\Exceptions\NotFoundException
+     */
+    public function getMemberByName(string $name): Character
+    {
+        if (isset($this->partyMembers[$name])) {
+            return $this->partyMembers[$name];
+        }
+
+        throw new NotFoundException("A character named `{$name}` isn't in the party.");
     }
 
     /**

@@ -51,13 +51,6 @@ class Junctioner
      */
     public function __construct(Party $party, Corral $corral)
     {
-        if (!$party instanceof Party) {
-            throw new \BadMethodCallException('Cannot junction without a Party instance.');
-        }
-        if (!$corral instanceof Corral) {
-            throw new \BadMethodCallException('Cannot junction without a Corral instance.');
-        }
-
         $this->party = $party;
         $this->corral = $corral;
     }
@@ -117,10 +110,6 @@ class Junctioner
             return true;
         }
 
-        if (!empty($intersection)) {
-            return true;
-        }
-
         return false;
     }
 
@@ -142,7 +131,7 @@ class Junctioner
      *
      * @return void
      */
-    private function sortPartyByLeastJunctions(): void
+    protected function sortPartyByLeastJunctions(): void
     {
         $team = $this->party->getPartyMembers();
         usort($team, function (Character $a, Character $b): int {
