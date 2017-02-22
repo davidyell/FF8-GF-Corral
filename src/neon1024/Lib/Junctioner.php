@@ -92,7 +92,9 @@ class Junctioner
     }
 
     /**
-     * Does the Character have a junctionable stat which the Guardian Force also has, but has not already been junctioned
+     * Does the Character have a junctionable stat which the Guardian Force also has, but has not already
+     * been junctioned
+     *
      * Can look for both any stat or a specific stat.
      *
      * @param \neon1024\Entity\Character\Character $character
@@ -101,9 +103,15 @@ class Junctioner
      *
      * @return bool
      */
-    protected function characterSharesJunctionStatWithGuardianForce(Character $character, GuardianForce $guardianForce, ?string $stat): bool
-    {
-        $sharesJunctionableStat = array_intersect($character->getJunctionableStats(), $guardianForce->getStatJunctions());
+    protected function characterSharesJunctionStatWithGuardianForce(
+        Character $character,
+        GuardianForce $guardianForce,
+        ?string $stat
+    ): bool {
+        $sharesJunctionableStat = array_intersect(
+            $character->getJunctionableStats(),
+            $guardianForce->getStatJunctions()
+        );
 
         if ($stat !== null && $guardianForce->hasJunction($stat) && !empty($sharesJunctionableStat)) {
             return true;
