@@ -18,8 +18,6 @@ class Bootstrap
      */
     public function dispatch($url)
     {
-        ob_start();
-        
         switch ($url) {
             case '/':
             default:
@@ -33,7 +31,5 @@ class Bootstrap
                 $controller->autoJunction();
                 break;
         }
-        
-        ob_flush();
     }
 }
