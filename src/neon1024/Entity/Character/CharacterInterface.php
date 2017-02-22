@@ -11,7 +11,7 @@ namespace neon1024\Entity\Character;
 
 use neon1024\Entity\GuardianForce\GuardianForce;
 
-interface CharacterInferface
+interface CharacterInterface
 {
     
     /**

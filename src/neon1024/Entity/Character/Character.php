@@ -12,7 +12,7 @@ namespace neon1024\Entity\Character;
 use neon1024\Entity\GuardianForce\GuardianForce;
 use neon1024\Repository\Corral;
 
-class Character implements CharacterInferface
+class Character implements CharacterInterface
 {
     /**
      * Name of the character
