@@ -1,7 +1,5 @@
 #Final Fantasy VIII Corral
-An application to organise your Guardian Forces so that you can maximise the junction coverage on your team or teams.  
-
-An example is running on Google App Engine, http://neon-pad-87409.appspot.com/
+An application to organise your Guardian Forces so that you can maximise the junction coverage on your team or teams.
 
 ##Why?
 Tried to build an OOP application without using a framework.
