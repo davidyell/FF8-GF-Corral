@@ -18,23 +18,6 @@ class JunctionsController
 {
     
     /**
-     * List of all junctionable stats
-     *
-     * @var array
-     */
-    public $junctions = [
-        'HP',
-        'Str',
-        'Vit',
-        'Mag',
-        'Spr',
-        'Spd',
-        'Eva',
-        'Hit',
-        'Luck'
-    ];
-    
-    /**
      * Array of variables for the view
      *
      * @var array
