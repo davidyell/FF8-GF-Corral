@@ -46,7 +46,7 @@ The junctions that can be placed in the XML file are Case SenSiTive.
 * Luck-J
 
 ## Junction system
-If you're not familiar with the game, or what a Guardian Force, or how it works. You can read more on Wikipedia.
+If you're not familiar with the game, or what a Guardian Force is, or how it works. You can read more on Wikipedia.
 https://en.wikipedia.org/wiki/Final_Fantasy_VIII#Junction_system
 
 ##Credit
