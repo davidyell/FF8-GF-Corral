@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ca517cef17e04ae92ded9e05f426b76",
+    "content-hash": "d55eda1dd352c62edd504560b8da7829",
     "packages": [
         {
             "name": "twbs/bootstrap",
@@ -1396,7 +1396,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "~7.0"
+        "php": "~7.1"
     },
     "platform-dev": []
 }

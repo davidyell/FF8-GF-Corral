@@ -20,5 +20,6 @@
 			"neon1024\\": "src/neon1024",
 			"test\\": "test"
 		}
-	}
+	},
+    "license": "CC-BY-SA-4.0"
 }
