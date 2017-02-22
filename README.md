@@ -56,3 +56,5 @@ Squaresoft / Square Enix - Final Fantasy VIII
 ## License
 [![Creative Commons Licence](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)  
 This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
+
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/739c8310-f6bc-4847-a4cc-2ff4417db956/big.png)](https://insight.sensiolabs.com/projects/739c8310-f6bc-4847-a4cc-2ff4417db956)
