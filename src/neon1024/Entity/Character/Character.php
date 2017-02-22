@@ -189,7 +189,7 @@ class Character implements CharacterInferface
     {
         $this->junctionableStats = $stats;
     }
-    
+
     /**
      * How many GFs does this character have junctioned
      *

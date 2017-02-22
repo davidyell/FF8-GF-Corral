@@ -24,15 +24,17 @@
 					<thead>
 						<tr>
 							<th>GF</th>
-							<?php foreach ($this->junctions as $junction) {
-                                echo "<th>" . $junction . "</th>";
-}?>
+							<?php
+                            foreach ($this->junctions as $junction) {
+                                echo "<th class='stat'>" . $junction . "</th>";
+                            }
+                            ?>
                             <th>Other junctions</th>
                             <th>Abilities</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($this->viewVars['gfs']->getCollection() as $gf) : ?>
+                        <?php foreach ($this->viewVars['gfs']->getCollection() as $gf) :?>
                             <tr>
                                 <td class='table-label'>
                                     <img src='/assets/images/<?php echo $gf->getName();?>.png'>

@@ -9,12 +9,18 @@
 namespace tests;
 
 use neon1024\Entity\Character\Character;
+use neon1024\Exceptions\NotFoundException;
 use neon1024\Repository\Party;
 use PHPUnit\Framework\TestCase;
 
 class PartyTest extends TestCase
 {
-    public function testConstructor()
+    /**
+     * Setup a complete party for testing
+     *
+     * @return \neon1024\Repository\Party
+     */
+    private function setupParty(): Party
     {
         $characterData = simplexml_load_file(__DIR__ . '/Fixture/Party.xml');
 
@@ -25,6 +31,12 @@ class PartyTest extends TestCase
 
         $party = new Party($partyMembers[0], $partyMembers[1], $partyMembers[2]);
 
+        return $party;
+    }
+
+    public function testConstructor()
+    {
+        $party = $this->setupParty();
         $this->assertNotEmpty($party->getPartyMembers());
     }
 
@@ -39,5 +51,21 @@ class PartyTest extends TestCase
         $party = new Party($character, $character, $character);
 
         $this->assertNotEmpty($party->getPartyMembers());
+    }
+
+    public function testGetMemberByName()
+    {
+        $party = $this->setupParty();
+        $this->assertInstanceOf(Character::class, $party->getMemberByName('Squall'));
+        $this->assertEquals('Squall', $party->getMemberByName('Squall')->getName());
+    }
+
+    /**
+     * @expectedException \neon1024\Exceptions\NotFoundException
+     */
+    public function testGetMemberByNameWithInvalidName()
+    {
+        $party = $this->setupParty();
+        $party->getMemberByName('foo');
     }
 }
