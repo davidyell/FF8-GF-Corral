@@ -34,20 +34,18 @@ class Corral implements RepositoryInterface
      */
     public function loadFromXmlFile(string $filePath): void
     {
-        if (file_exists($filePath)) {
-            $xmlFile = file_get_contents($filePath);
+        if (!file_exists($filePath)) {
+            throw new NotFoundException("The file `{$filePath}` could not be found.");
+        }
 
-            try {
-                $this->xml = simplexml_load_string($xmlFile);
-            } catch (\Exception $e) {
-                throw new InvalidXmlException("XML file `{$filePath}` is invalid and could not be parsed.");
-            }
+        try {
+            $this->xml = simplexml_load_file($filePath);
+        } catch (\Exception $e) {
+            throw new InvalidXmlException("The XML file `{$filePath}` could not be loaded.");
+        }
 
-            foreach ($this->xml->GuardianForce as $gf) {
-                $this->collection[(string)$gf->name] = new GuardianForce($gf);
-            }
-        } else {
-            throw new NotFoundException('The file `' . $filePath . '` could not be found.');
+        foreach ($this->xml->GuardianForce as $gf) {
+            $this->addItem(new GuardianForce($gf));
         }
     }
 
@@ -60,7 +58,7 @@ class Corral implements RepositoryInterface
     public function addItem($gf): Corral
     {
         if (!$gf instanceof GuardianForce) {
-            throw new \BadMethodCallException('Can only add Characters to a Garden.');
+            throw new \BadMethodCallException('Can only add Guardian Forces to a Corral.');
         }
 
         $this->collection[$gf->getName()] = $gf;
@@ -94,7 +92,7 @@ class Corral implements RepositoryInterface
      * @return \neon1024\FF8Corral\Entity\GuardianForce\GuardianForce
      * @throws \neon1024\FF8Corral\Exceptions\NotFoundException When the item isn't in the collection
      */
-    public function getItem(string $name)
+    public function getItem(string $name): GuardianForce
     {
         if (!isset($this->collection[$name])) {
             throw new NotFoundException("The item `{$name}` is not in the collection.");
