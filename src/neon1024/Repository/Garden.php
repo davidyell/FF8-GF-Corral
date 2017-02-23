@@ -34,20 +34,18 @@ class Garden implements RepositoryInterface
      */
     public function loadFromXmlFile(string $filePath): void
     {
-        if (file_exists($filePath)) {
-            $xmlFile = file_get_contents($filePath);
+        if (!file_exists($filePath)) {
+            throw new NotFoundException("The file `{$filePath}` could not be found or could not be read.");
+        }
 
-            try {
-                $this->xml = simplexml_load_string($xmlFile);
-            } catch (\Exception $e) {
-                throw new InvalidXmlException("XML file `{$filePath}` is invalid and could not be parsed.");
-            }
+        try {
+            $this->xml = simplexml_load_file($filePath);
+        } catch (\Exception $e) {
+            throw new InvalidXmlException("XML file `{$filePath}` is invalid and could not be parsed.");
+        }
 
-            foreach ($this->xml->Character as $char) {
-                $this->collection[(string)$char->name] = new Character($char);
-            }
-        } else {
-            throw new NotFoundException("The file `{$filePath}` could not be found.");
+        foreach ($this->xml->Character as $char) {
+            $this->addItem(new Character($char));
         }
     }
 
@@ -55,10 +53,10 @@ class Garden implements RepositoryInterface
      * Add an item to the Repository
      *
      * @param \neon1024\FF8Corral\Entity\Character\Character $character The item to add to the collection
-     * @return RepositoryInterface
+     * @return \neon1024\FF8Corral\Repository\Garden
      * @throws \BadMethodCallException
      */
-    public function addItem($character)
+    public function addItem($character): Garden
     {
         if (!$character instanceof Character) {
             throw new \BadMethodCallException('Can only add Characters to a Garden.');
@@ -95,7 +93,7 @@ class Garden implements RepositoryInterface
      * @return \neon1024\FF8Corral\Entity\Character\Character
      * @throws \neon1024\FF8Corral\Exceptions\NotFoundException
      */
-    public function getItem(string $name)
+    public function getItem(string $name): Character
     {
         if (!isset($this->collection[$name])) {
             throw new NotFoundException("The item `{$name}` is not in the collection.");

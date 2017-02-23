@@ -17,20 +17,20 @@ class Junctioner
 {
 
     /**
-     * @var \neon1024\Repository\Party $party Party of Character instances
+     * @var \neon1024\FF8Corral\Repository\Party $party Party of Character instances
      */
     public $party;
 
     /**
-     * @var \neon1024\Repository\Corral $corral Corral of Guardian Force instances
+     * @var \neon1024\FF8Corral\Repository\Corral $corral Corral of Guardian Force instances
      */
     public $corral;
 
     /**
      * Junctioner constructor.
      *
-     * @param \neon1024\Repository\Party $party Party of Character instances
-     * @param \neon1024\Repository\Corral $corral Corral of Guardian Force instances
+     * @param \neon1024\FF8Corral\Repository\Party $party Party of Character instances
+     * @param \neon1024\FF8Corral\Repository\Corral $corral Corral of Guardian Force instances
      * @throws \BadMethodCallException
      */
     public function __construct(Party $party, Corral $corral)
@@ -74,10 +74,9 @@ class Junctioner
      *
      * Can look for both any stat or a specific stat.
      *
-     * @param \neon1024\Entity\Character\Character $character
-     * @param \neon1024\Entity\GuardianForce\GuardianForce $guardianForce
+     * @param \neon1024\FF8Corral\Entity\Character\Character $character
+     * @param \neon1024\FF8Corral\Entity\GuardianForce\GuardianForce $guardianForce
      * @param string|null $stat
-     *
      * @return bool
      */
     protected function characterSharesJunctionStatWithGuardianForce(
@@ -100,9 +99,8 @@ class Junctioner
     /**
      * Does a Character already have a specific stat junctioned
      *
-     * @param \neon1024\Entity\Character\Character $character
+     * @param \neon1024\FF8Corral\Entity\Character\Character $character
      * @param string $stat
-     *
      * @return bool
      */
     protected function characterStatAlreadyJunctioned(Character $character, string $stat): bool
@@ -111,7 +109,7 @@ class Junctioner
     }
 
     /**
-     * Create a new Party instance with Characters with the least number of junctions are higher in the ordering.
+     * Create a new Party instance with Characters with the least number of junctions higher in the ordering.
      *
      * @return void
      */
