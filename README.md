@@ -35,7 +35,7 @@ directory. Here they can be edited to match your current GF configs.
 
 If you have removed or added new abilities to your GF's using items, you will want to customise the `GFs.xml` file to match.  
 
-The junctions that can be placed in the XML file are Case SenSiTive.  
+The junctions that can be placed in the XML file are Case Sensitive.  
 * HP-J
 * Str-J
 * Vit-J
