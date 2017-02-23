@@ -32,8 +32,8 @@ class JunctionsController
      * @var array
      */
     private $defaults = [
-        'characters' => '../../src/neon1024/Entity/Character/Characters.xml',
-        'gfs' => '../../src/neon1024/Entity/GuardianForce/GFs.xml'
+        'characters' => '../src/neon1024/Entity/Character/Characters.xml',
+        'gfs' => '../src/neon1024/Entity/GuardianForce/GFs.xml'
     ];
     
     /**
@@ -42,8 +42,8 @@ class JunctionsController
      * @var array
      */
     private $userData = [
-        'characters' => '../../config/Characters.xml',
-        'gfs' => '../../config/GFs.xml'
+        'characters' => '../config/Characters.xml',
+        'gfs' => '../config/GFs.xml'
     ];
     
     /**
@@ -74,7 +74,7 @@ class JunctionsController
         ];
 
         $response = new Response();
-        $response->getBody()->write(require('../../src/neon1024/Views/index.php'));
+        $response->getBody()->write(require('../src/neon1024/Views/index.php'));
 
         return $response;
     }
@@ -117,7 +117,7 @@ class JunctionsController
         ];
 
         $response = new Response();
-        $response->getBody()->write(require('../../src/neon1024/Views/junction.php'));
+        $response->getBody()->write(require('../src/neon1024/Views/junction.php'));
 
         return $response;
     }

@@ -6,7 +6,7 @@
  */
 use neon1024\FF8Corral\Bootstrap;
 
-require dirname(dirname(__DIR__)) . '/vendor/autoload.php';
+require dirname(__DIR__) . '/vendor/autoload.php';
 
 $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
     $_SERVER,
