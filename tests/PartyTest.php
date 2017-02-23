@@ -8,9 +8,8 @@
 
 namespace tests;
 
-use neon1024\Entity\Character\Character;
-use neon1024\Exceptions\NotFoundException;
-use neon1024\Repository\Party;
+use neon1024\FF8Corral\Entity\Character\Character;
+use neon1024\FF8Corral\Repository\Party;
 use PHPUnit\Framework\TestCase;
 
 class PartyTest extends TestCase
@@ -18,7 +17,7 @@ class PartyTest extends TestCase
     /**
      * Setup a complete party for testing
      *
-     * @return \neon1024\Repository\Party
+     * @return \neon1024\FF8Corral\Repository\Party
      */
     private function setupParty(): Party
     {
@@ -41,7 +40,7 @@ class PartyTest extends TestCase
     }
 
     /**
-     * @expectedException \neon1024\Exceptions\CharacterAlreadyInPartyException
+     * @expectedException \neon1024\FF8Corral\Exceptions\CharacterAlreadyInPartyException
      */
     public function testConstructorWithDuplicateCharacter()
     {
@@ -61,7 +60,7 @@ class PartyTest extends TestCase
     }
 
     /**
-     * @expectedException \neon1024\Exceptions\NotFoundException
+     * @expectedException \neon1024\FF8Corral\Exceptions\NotFoundException
      */
     public function testGetMemberByNameWithInvalidName()
     {

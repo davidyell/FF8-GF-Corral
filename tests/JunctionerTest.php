@@ -8,21 +8,21 @@
 
 namespace tests;
 
-use neon1024\Entity\Character\Character;
-use neon1024\Lib\Junctioner;
-use neon1024\Repository\Corral;
-use neon1024\Repository\Party;
+use neon1024\FF8Corral\Entity\Character\Character;
+use neon1024\FF8Corral\Lib\Junctioner;
+use neon1024\FF8Corral\Repository\Corral;
+use neon1024\FF8Corral\Repository\Party;
 use PHPUnit\Framework\TestCase;
 
 class JunctionerTest extends TestCase
 {
     /**
-     * @var \neon1024\Repository\Party
+     * @var \neon1024\FF8Corral\Repository\Party
      */
     public $party;
 
     /**
-     * @var \neon1024\Repository\Corral
+     * @var \neon1024\FF8Corral\Repository\Corral
      */
     public $corral;
 
@@ -79,6 +79,5 @@ class JunctionerTest extends TestCase
         $this->assertNotEmpty($this->party->getMemberByName('Squall')->getJunctionedStats());
         $this->assertNotEmpty($this->party->getMemberByName('Rinoa')->getJunctionedStats());
         $this->assertNotEmpty($this->party->getMemberByName('Quistis')->getJunctionedStats());
-
     }
 }

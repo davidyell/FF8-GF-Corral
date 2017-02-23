@@ -7,33 +7,30 @@ declare(strict_types=1);
  * @author David Yell <neon1024@gmail.com>
  */
 
-namespace neon1024;
+namespace neon1024\FF8Corral;
+
+use neon1024\FF8Corral\Controller\JunctionsController;
+use Zend\Diactoros\Response;
+use Zend\Diactoros\ServerRequest;
 
 class Bootstrap
 {
     /**
      * Dispatch the request to the correct controller
      *
-     * @param string $url
+     * @param \Zend\Diactoros\ServerRequest $request
+     * @return \Zend\Diactoros\Response
      */
-    public function dispatch($url)
+    public function dispatch(ServerRequest $request): Response
     {
-        ob_start();
-        
-        switch ($url) {
+        switch ($request->getUri()->getPath()) {
             case '/':
             default:
-                require 'Controller/JunctionsController.php';
-                $controller = new Controller\JunctionsController();
-                $controller->index();
-                break;
+                $controller = new JunctionsController();
+                return $controller->index();
             case '/junction':
-                require 'Controller/JunctionsController.php';
-                $controller = new Controller\JunctionsController();
-                $controller->autoJunction();
-                break;
+                $controller = new JunctionsController();
+                return $controller->autoJunction();
         }
-        
-        ob_flush();
     }
 }

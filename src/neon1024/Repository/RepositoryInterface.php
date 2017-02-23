@@ -6,7 +6,7 @@ declare(strict_types=1);
  *
  * @author David Yell <neon1024@gmail.com>
  */
-namespace neon1024\Repository;
+namespace neon1024\FF8Corral\Repository;
 
 interface RepositoryInterface
 {
@@ -15,8 +15,8 @@ interface RepositoryInterface
      *
      * @param string $filePath Path to the XML file to load
      * @return void
-     * @throws \neon1024\Exceptions\NotFoundException When the file is not found
-     * @throws \neon1024\Exceptions\InvalidXmlException When the xml cannot be loaded
+     * @throws \neon1024\FF8Corral\Exceptions\NotFoundException When the file is not found
+     * @throws \neon1024\FF8Corral\Exceptions\InvalidXmlException When the xml cannot be loaded
      */
     public function loadFromXmlFile(string $filePath): void;
 

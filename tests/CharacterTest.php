@@ -6,19 +6,19 @@
  */
 namespace tests;
 
-use \neon1024\Entity\Character\Character;
-use \neon1024\Entity\GuardianForce\GuardianForce;
+use \neon1024\FF8Corral\Entity\Character\Character;
+use \neon1024\FF8Corral\Entity\GuardianForce\GuardianForce;
 use \PHPUnit\Framework\TestCase;
 
 class CharacterTest extends TestCase
 {
     /**
-     * @var \neon1024\Entity\Character\Character
+     * @var \neon1024\FF8Corral\Entity\Character\Character
      */
     public $Character;
 
     /**
-     * @var \neon1024\Entity\GuardianForce\GuardianForce
+     * @var \neon1024\FF8Corral\Entity\GuardianForce\GuardianForce
      */
     public $GuardianForce;
     

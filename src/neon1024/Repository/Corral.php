@@ -6,11 +6,11 @@ declare(strict_types=1);
  *
  * @author David Yell <neon1024@gmail.com>
  */
-namespace neon1024\Repository;
+namespace neon1024\FF8Corral\Repository;
 
-use neon1024\Entity\GuardianForce\GuardianForce;
-use neon1024\Exceptions\InvalidXmlException;
-use neon1024\Exceptions\NotFoundException;
+use neon1024\FF8Corral\Entity\GuardianForce\GuardianForce;
+use neon1024\FF8Corral\Exceptions\InvalidXmlException;
+use neon1024\FF8Corral\Exceptions\NotFoundException;
 
 class Corral implements RepositoryInterface
 {
@@ -29,8 +29,8 @@ class Corral implements RepositoryInterface
      *
      * @param string $filePath Path to the XML file to load
      * @return void
-     * @throws \neon1024\Exceptions\NotFoundException When the file is not found
-     * @throws \neon1024\Exceptions\InvalidXmlException When the xml cannot be loaded
+     * @throws \neon1024\FF8Corral\Exceptions\NotFoundException When the file is not found
+     * @throws \neon1024\FF8Corral\Exceptions\InvalidXmlException When the xml cannot be loaded
      */
     public function loadFromXmlFile(string $filePath): void
     {
@@ -54,10 +54,10 @@ class Corral implements RepositoryInterface
     /**
      * Add an item to the Repository
      *
-     * @param \neon1024\Entity\GuardianForce\GuardianForce $gf The item to add to the collection
-     * @return RepositoryInterface
+     * @param \neon1024\FF8Corral\Entity\GuardianForce\GuardianForce $gf The item to add to the collection
+     * @return Corral
      */
-    public function addItem($gf)
+    public function addItem($gf): Corral
     {
         if (!$gf instanceof GuardianForce) {
             throw new \BadMethodCallException('Can only add Characters to a Garden.');
@@ -73,7 +73,7 @@ class Corral implements RepositoryInterface
      *
      * @param string $gf Name of the item key to remove
      * @return bool
-     * @throws \neon1024\Exceptions\NotFoundException When the item isn't in the collection
+     * @throws \neon1024\FF8Corral\Exceptions\NotFoundException When the item isn't in the collection
      */
     public function removeItem(string $gf): bool
     {
@@ -91,8 +91,8 @@ class Corral implements RepositoryInterface
      * Get a single item from the collection
      *
      * @param string $name Item to find in the collection
-     * @return \neon1024\Entity\GuardianForce\GuardianForce
-     * @throws \neon1024\Exceptions\NotFoundException When the item isn't in the collection
+     * @return \neon1024\FF8Corral\Entity\GuardianForce\GuardianForce
+     * @throws \neon1024\FF8Corral\Exceptions\NotFoundException When the item isn't in the collection
      */
     public function getItem(string $name)
     {

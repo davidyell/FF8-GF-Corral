@@ -6,11 +6,11 @@ declare(strict_types=1);
  *
  * @author David Yell <neon1024@gmail.com>
  */
-namespace neon1024\Repository;
+namespace neon1024\FF8Corral\Repository;
 
-use neon1024\Entity\Character\Character;
-use neon1024\Exceptions\InvalidXmlException;
-use neon1024\Exceptions\NotFoundException;
+use neon1024\FF8Corral\Entity\Character\Character;
+use neon1024\FF8Corral\Exceptions\InvalidXmlException;
+use neon1024\FF8Corral\Exceptions\NotFoundException;
 
 class Garden implements RepositoryInterface
 {
@@ -29,8 +29,8 @@ class Garden implements RepositoryInterface
      *
      * @param string $filePath Path to the XML file to load
      * @return void
-     * @throws \neon1024\Exceptions\NotFoundException When the file is not found
-     * @throws \neon1024\Exceptions\InvalidXmlException When the xml cannot be loaded
+     * @throws \neon1024\FF8Corral\Exceptions\NotFoundException When the file is not found
+     * @throws \neon1024\FF8Corral\Exceptions\InvalidXmlException When the xml cannot be loaded
      */
     public function loadFromXmlFile(string $filePath): void
     {
@@ -54,7 +54,7 @@ class Garden implements RepositoryInterface
     /**
      * Add an item to the Repository
      *
-     * @param \neon1024\Entity\Character\Character $character The item to add to the collection
+     * @param \neon1024\FF8Corral\Entity\Character\Character $character The item to add to the collection
      * @return RepositoryInterface
      * @throws \BadMethodCallException
      */
@@ -74,7 +74,7 @@ class Garden implements RepositoryInterface
      *
      * @param string $item Name of the item key to remove
      * @return bool
-     * @throws \neon1024\Exceptions\NotFoundException
+     * @throws \neon1024\FF8Corral\Exceptions\NotFoundException
      */
     public function removeItem(string $item): bool
     {
@@ -92,8 +92,8 @@ class Garden implements RepositoryInterface
      * Get a single item from the collection
      *
      * @param string $name Item to find in the collection
-     * @return \neon1024\Entity\Character\Character
-     * @throws \neon1024\Exceptions\NotFoundException
+     * @return \neon1024\FF8Corral\Entity\Character\Character
+     * @throws \neon1024\FF8Corral\Exceptions\NotFoundException
      */
     public function getItem(string $name)
     {

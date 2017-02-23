@@ -6,19 +6,19 @@
  */
 namespace tests;
 
-use neon1024\Entity\GuardianForce\GuardianForce;
-use neon1024\Repository\Corral;
+use neon1024\FF8Corral\Entity\GuardianForce\GuardianForce;
+use neon1024\FF8Corral\Repository\Corral;
 use PHPUnit\Framework\TestCase;
 
 class CorralTest extends TestCase
 {
     /**
-     * @var \neon1024\Repository\Corral
+     * @var \neon1024\FF8Corral\Repository\Corral
      */
     public $Corral;
 
     /**
-     * @var \neon1024\Entity\GuardianForce\GuardianForce
+     * @var \neon1024\FF8Corral\Entity\GuardianForce\GuardianForce
      */
     public $GuardianForce;
     
@@ -46,7 +46,7 @@ class CorralTest extends TestCase
     }
 
     /**
-     * @expectedException \neon1024\Exceptions\NotFoundException
+     * @expectedException \neon1024\FF8Corral\Exceptions\NotFoundException
      */
     public function testGetNonExistantItem()
     {
@@ -79,7 +79,7 @@ class CorralTest extends TestCase
     }
 
     /**
-     * @expectedException \neon1024\Exceptions\NotFoundException
+     * @expectedException \neon1024\FF8Corral\Exceptions\NotFoundException
      */
     public function testRemovingNonExistantItem()
     {
@@ -98,7 +98,7 @@ class CorralTest extends TestCase
     }
 
     /**
-     * @expectedException \neon1024\Exceptions\NotFoundException
+     * @expectedException \neon1024\FF8Corral\Exceptions\NotFoundException
      */
     public function testBuildGardenFromXmlWithNoFile()
     {
@@ -108,7 +108,7 @@ class CorralTest extends TestCase
     }
 
     /**
-     * @expectedException \neon1024\Exceptions\InvalidXmlException
+     * @expectedException \neon1024\FF8Corral\Exceptions\InvalidXmlException
      */
     public function testBuildGardenFromXmlWithInvalidFile()
     {

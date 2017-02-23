@@ -7,9 +7,9 @@ declare(strict_types=1);
  * @author David Yell <neon1024@gmail.com>
  */
 
-namespace neon1024\Entity\GuardianForce;
+namespace neon1024\FF8Corral\Entity\GuardianForce;
 
-use neon1024\Entity\Character\Character;
+use neon1024\FF8Corral\Entity\Character\Character;
 
 class GuardianForce
 {
