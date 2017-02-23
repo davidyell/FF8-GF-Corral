@@ -19,7 +19,7 @@ autoloader setup.
 Then you can either configure your web server to run the application or run it using PHP's server.
 
 ```bash
-cd web/public && php -S localhost:4040
+cd web && php -S localhost:4040
 ```
 
 There is a test suite which can be run with
