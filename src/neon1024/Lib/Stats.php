@@ -6,7 +6,7 @@ declare(strict_types=1);
  * @author David Yell <neon1024@gmail.com>
  */
 
-namespace neon1024\Lib;
+namespace neon1024\FF8Corral\Lib;
 
 class Stats
 {

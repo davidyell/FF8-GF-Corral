@@ -7,10 +7,10 @@ declare(strict_types=1);
  * @author David Yell <neon1024@gmail.com>
  */
 
-namespace neon1024\Entity\Character;
+namespace neon1024\FF8Corral\Entity\Character;
 
-use neon1024\Entity\GuardianForce\GuardianForce;
-use neon1024\Repository\Corral;
+use neon1024\FF8Corral\Entity\GuardianForce\GuardianForce;
+use neon1024\FF8Corral\Repository\Corral;
 
 class Character implements CharacterInterface
 {
@@ -38,7 +38,7 @@ class Character implements CharacterInterface
     /**
      * Collection of junctioned Guardian Force instances, keyed by their name
      *
-     * @var \neon1024\Repository\Corral
+     * @var \neon1024\FF8Corral\Repository\Corral
      */
     private $junctionedGFs;
     
@@ -58,7 +58,7 @@ class Character implements CharacterInterface
      * Junction a GF to this character
      *
      * @param GuardianForce $gf
-     * @return \neon1024\Entity\Character\Character
+     * @return \neon1024\FF8Corral\Entity\Character\Character
      */
     public function junction(GuardianForce $gf): Character
     {
@@ -75,8 +75,8 @@ class Character implements CharacterInterface
     /**
      * Remove a juncitoned Guardian Force from this character
      *
-     * @param \neon1024\Entity\GuardianForce\GuardianForce $gf Guardian force to unjunction
-     * @return \neon1024\Entity\Character\Character
+     * @param \neon1024\FF8Corral\Entity\GuardianForce\GuardianForce $gf Guardian force to unjunction
+     * @return \neon1024\FF8Corral\Entity\Character\Character
      */
     public function unjunction(GuardianForce $gf): Character
     {

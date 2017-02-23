@@ -7,12 +7,12 @@ declare(strict_types=1);
  * @copyright 2017 UK Web Media Ltd
  */
 
-namespace neon1024\Lib;
+namespace neon1024\FF8Corral\Lib;
 
-use neon1024\Entity\Character\Character;
-use neon1024\Entity\GuardianForce\GuardianForce;
-use neon1024\Repository\Corral;
-use neon1024\Repository\Party;
+use neon1024\FF8Corral\Entity\Character\Character;
+use neon1024\FF8Corral\Entity\GuardianForce\GuardianForce;
+use neon1024\FF8Corral\Repository\Corral;
+use neon1024\FF8Corral\Repository\Party;
 
 class Junctioner
 {

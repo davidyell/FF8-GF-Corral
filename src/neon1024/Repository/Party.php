@@ -6,11 +6,11 @@ declare(strict_types=1);
  *
  * @author David Yell <neon1024@gmail.com>
  */
-namespace neon1024\Repository;
+namespace neon1024\FF8Corral\Repository;
 
-use neon1024\Entity\Character\Character;
-use neon1024\Exceptions\CharacterAlreadyInPartyException;
-use neon1024\Exceptions\NotFoundException;
+use neon1024\FF8Corral\Entity\Character\Character;
+use neon1024\FF8Corral\Exceptions\CharacterAlreadyInPartyException;
+use neon1024\FF8Corral\Exceptions\NotFoundException;
 
 class Party
 {
@@ -22,9 +22,9 @@ class Party
     /**
      * Party constructor.
      *
-     * @param \neon1024\Entity\Character\Character $first
-     * @param \neon1024\Entity\Character\Character $second
-     * @param \neon1024\Entity\Character\Character $third
+     * @param \neon1024\FF8Corral\Entity\Character\Character $first
+     * @param \neon1024\FF8Corral\Entity\Character\Character $second
+     * @param \neon1024\FF8Corral\Entity\Character\Character $third
      */
     public function __construct(Character $first, Character $second, Character $third)
     {
@@ -47,8 +47,8 @@ class Party
      * Get a specific Character from the Party
      *
      * @param string $name
-     * @return \neon1024\Entity\Character\Character
-     * @throws \neon1024\Exceptions\NotFoundException
+     * @return \neon1024\FF8Corral\Entity\Character\Character
+     * @throws \neon1024\FF8Corral\Exceptions\NotFoundException
      */
     public function getMemberByName(string $name): Character
     {
@@ -62,9 +62,9 @@ class Party
     /**
      * Add a character to the party
      *
-     * @param \neon1024\Entity\Character\Character $character Character instance to add to the party
-     * @return \neon1024\Repository\Party
-     * @throws \neon1024\Exceptions\CharacterAlreadyInPartyException
+     * @param \neon1024\FF8Corral\Entity\Character\Character $character Character instance to add to the party
+     * @return \neon1024\FF8Corral\Repository\Party
+     * @throws \neon1024\FF8Corral\Exceptions\CharacterAlreadyInPartyException
      */
     public function addCharacter(Character $character): Party
     {

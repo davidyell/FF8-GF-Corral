@@ -1,5 +1,5 @@
 {
-    "name": "davidyell/ff8-gf-corral",
+    "name": "neon1024/ff8-gf-corral",
     "description": "Application for organising the most optimal spread of Final Fantasy 8 Guardian Forces",
     "authors": [
         {
@@ -18,7 +18,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"neon1024\\": "src/neon1024",
+			"neon1024\\FF8Corral\\": "src/neon1024",
 			"test\\": "test"
 		}
 	},

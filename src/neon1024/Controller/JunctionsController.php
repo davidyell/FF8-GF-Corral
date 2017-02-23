@@ -6,14 +6,14 @@ declare(strict_types=1);
  *
  * @author David Yell <neon1024@gmail.com>
  */
-namespace neon1024\Controller;
+namespace neon1024\FF8Corral\Controller;
 
-use neon1024\Lib\Junctioner;
-use neon1024\Lib\Stats;
-use neon1024\Repository\Garden;
-use neon1024\Repository\Corral;
-use neon1024\Repository\Party;
-use neon1024\Entity\Character\Character;
+use neon1024\FF8Corral\Lib\Junctioner;
+use neon1024\FF8Corral\Lib\Stats;
+use neon1024\FF8Corral\Repository\Garden;
+use neon1024\FF8Corral\Repository\Corral;
+use neon1024\FF8Corral\Repository\Party;
+use neon1024\FF8Corral\Entity\Character\Character;
 use Zend\Diactoros\Response;
 
 class JunctionsController

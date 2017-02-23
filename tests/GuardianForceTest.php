@@ -6,8 +6,8 @@
  */
 namespace tests;
 
-use neon1024\Entity\GuardianForce\GuardianForce;
-use neon1024\Entity\Character\Character;
+use neon1024\FF8Corral\Entity\GuardianForce\GuardianForce;
+use neon1024\FF8Corral\Entity\Character\Character;
 use PHPUnit\Framework\TestCase;
 
 class GuardianForceTest extends TestCase
