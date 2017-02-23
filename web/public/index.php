@@ -4,7 +4,7 @@
  * 
  * @author David Yell <neon1024@gmail.com>
  */
-use neon1024\Bootstrap;
+use neon1024\FF8Corral\Bootstrap;
 
 require dirname(dirname(__DIR__)) . '/vendor/autoload.php';
 

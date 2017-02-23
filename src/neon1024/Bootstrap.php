@@ -7,9 +7,9 @@ declare(strict_types=1);
  * @author David Yell <neon1024@gmail.com>
  */
 
-namespace neon1024;
+namespace neon1024\FF8Corral;
 
-use neon1024\Controller\JunctionsController;
+use neon1024\FF8Corral\Controller\JunctionsController;
 use Zend\Diactoros\Response;
 use Zend\Diactoros\ServerRequest;
 
