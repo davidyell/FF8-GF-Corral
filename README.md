@@ -1,10 +1,10 @@
-#Final Fantasy VIII Corral
+# Final Fantasy VIII Corral
 An application to organise your Guardian Forces so that you can maximise the junction coverage on your team or teams.  
 
-##Why?
+## Why?
 Tried to build an OOP application without using a framework.
 
-##Premise
+## Premise
 The idea is that when your team gets stripped of all their Guardian Forces you have to spend time working out which ones go on 
 which character to ensure that all your characters can have as many stats junctioned as possible without having any 
 overlaps, such as one character having two HP-J.
@@ -12,7 +12,7 @@ overlaps, such as one character having two HP-J.
 ## Requirements
 * PHP 7.1+
 
-##Installation
+## Installation
 If you clone the project to a folder, and then run `composer install` to install the dependencies and get the 
 autoloader setup.
 
